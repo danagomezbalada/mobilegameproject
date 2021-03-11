@@ -1,1 +1,6 @@
 site_name: My Docs
+site_url: https://natius-dev.gitlab.io/colonitzacio-i-els-venuts
+site_dir: public
+repo_url: https://gitlab.com/natius-dev/colonitzacio-i-els-venuts
+nav:
+    - Home: index.md
