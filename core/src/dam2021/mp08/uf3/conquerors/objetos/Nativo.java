@@ -11,8 +11,8 @@ public class Nativo extends Actor {
     private Vector2 posicion;
 
     //Direcciones del nativo
-    public static final int ARRIBA =1;
-    public static final int ABAJO =2;
+    public static final int IZQUIERDA =1;
+    public static final int DERECHA =2;
     public static final int QUIETO =0;
 
     public Nativo(int anchura, int altura, float x, float y){
@@ -34,5 +34,26 @@ public class Nativo extends Actor {
     @Override
     public void act(float delta) {
         super.act(delta);
+    }
+
+    //Getters de los atributos principales
+    public int getAnchura() { return anchura; }
+    public int getAltura() { return altura; }
+    public float getX() {
+        return posicion.x;
+    }
+    public float getY() {
+        return posicion.y;
+    }
+
+    //Cambios de direccion
+    public void anarDalt() {
+        this.direccion = IZQUIERDA;
+    }
+    public void anarBaix() {
+        this.direccion = DERECHA;
+    }
+    public void noMoure() {
+        this.direccion = QUIETO;
     }
 }
