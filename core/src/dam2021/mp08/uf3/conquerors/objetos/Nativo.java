@@ -9,6 +9,7 @@ public class Nativo extends Actor {
     //Atributos del nativo
     private int anchura, altura, direccion;
     private Vector2 posicion;
+    private boolean estaSaltando;
 
     //Direcciones del nativo
     public static final int IZQUIERDA =1;
@@ -47,13 +48,13 @@ public class Nativo extends Actor {
     }
 
     //Cambios de direccion
-    public void anarDalt() {
+    public void irIzquierda() {
         this.direccion = IZQUIERDA;
     }
-    public void anarBaix() {
+    public void irDerecha() {
         this.direccion = DERECHA;
     }
-    public void noMoure() {
+    public void noMover() {
         this.direccion = QUIETO;
     }
 }
