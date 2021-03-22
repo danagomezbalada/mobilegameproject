@@ -25,24 +25,24 @@ public class GameScreen implements Screen {
     private Stage stage;
 
     private ShapeRenderer renderizadorDeFiguras;
-    private Batch conjunt;
+    private Batch conjunto;
 
 
     public GameScreen() {
         this.renderizadorDeFiguras = new ShapeRenderer();
-        OrthographicCamera camera = new OrthographicCamera(
+        OrthographicCamera camara = new OrthographicCamera(
                 Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
 
         //True para que haga servir la Y
-        camera.setToOrtho(true);
+        camara.setToOrtho(true);
 
         //Viewport para ver que hay en pantalla
         StretchViewport viewport = new StretchViewport(
-                Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO, camera);
+                Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO, camara);
 
         //Crear Stage i Actores
         this.stage = new Stage(viewport);
-        this.conjunt = stage.getBatch();
+        this.conjunto = stage.getBatch();
 
         this.nativo = new Nativo(Configuracion.ANCHURA_NATIVO, Configuracion.ALTURA_NATIVO,
                 Configuracion.X_INICIAL_NATIVO, Configuracion.Y_INICIAL_NATIVO);
@@ -82,7 +82,7 @@ public class GameScreen implements Screen {
 
     private void dibujarElementos() {
         renderizadorDeFiguras.setProjectionMatrix(
-                conjunt.getProjectionMatrix());
+                conjunto.getProjectionMatrix());
         renderizadorDeFiguras.begin(ShapeRenderer.ShapeType.Filled);
 
         //Dibujamos al nativo
