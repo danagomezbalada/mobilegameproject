@@ -4,27 +4,23 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
+
 public class Nativo extends Actor {
 
-    //Atributos del nativo
     private int anchura, altura, direccion;
     private Vector2 posicion;
     private boolean estaSaltando;
 
-    //Direcciones del nativo
-    public static final int IZQUIERDA =1;
-    public static final int DERECHA =2;
+    public static final int IZQUIERDA =1; //Dalt
+    public static final int DERECHA =2; //Baix
     public static final int QUIETO =0;
 
     public Nativo(int anchura, int altura, float x, float y){
-        //Inicializamos los parametros del nativo
         this.anchura = anchura;
         this.altura = altura;
         this.posicion = new Vector2(x,y);
-
-        //Marcamos la direccion inicial
         this.direccion = QUIETO;
-
     }
 
     @Override
@@ -34,10 +30,24 @@ public class Nativo extends Actor {
 
     @Override
     public void act(float delta) {
-        super.act(delta);
+        //Movimiento nativo
+        switch(this.direccion){
+            case IZQUIERDA:
+                if(this.posicion.y - Configuracion.VELOCIDAD_NATIVO * delta >= 0){
+                    this.posicion.y -= Configuracion.VELOCIDAD_NATIVO * delta;
+                }
+                break;
+            case DERECHA:
+                if(this.posicion.y + this.altura + Configuracion.VELOCIDAD_NATIVO * delta <= Configuracion.ALTURA_JUEGO){
+                    this.posicion.y += Configuracion.VELOCIDAD_NATIVO * delta;
+                }
+                break;
+            case QUIETO:
+                break;
+        }
+
     }
 
-    //Getters de los atributos principales
     public int getAnchura() { return anchura; }
     public int getAltura() { return altura; }
     public float getX() {
@@ -47,7 +57,6 @@ public class Nativo extends Actor {
         return posicion.y;
     }
 
-    //Cambios de direccion
     public void irIzquierda() {
         this.direccion = IZQUIERDA;
     }

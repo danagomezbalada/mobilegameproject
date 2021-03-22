@@ -11,10 +11,10 @@ public class Scrollable extends Actor {
     private float anchura, altura;
     private boolean fueraDePantalla;
 
-    public Scrollable(float x, float y, float velocidad, float amplada, float altura){
+    public Scrollable(float x, float y, float velocidad, float anchura, float altura){
         this.posicion = new Vector2(x, y);
         this.velocidad = velocidad;
-        this.anchura = amplada;
+        this.anchura = anchura;
         this.altura = altura;
         this.fueraDePantalla = false;
     }
@@ -24,29 +24,26 @@ public class Scrollable extends Actor {
         return anchura;
     }
 
-    public float getAltura() {
-        return altura;
-    }
-
     public void setAnchura(float anchura) {
         this.anchura = anchura;
     }
 
-    public Vector2 getPosicion() {
-        return posicion;
-    }
-
-    public void setPosicion(Vector2 posicion) {
-        this.posicion = posicion;
+    public float getAltura() {
+        return altura;
     }
 
     public void setAltura(float altura) {
         this.altura = altura;
     }
 
+    public void setPosicion(Vector2 posicion) {
+        this.posicion = posicion;
+    }
+
     public boolean isFueraDePantalla() {
         return fueraDePantalla;
     }
+
     public float getX(){
         return this.posicion.x;
     }
@@ -60,18 +57,18 @@ public class Scrollable extends Actor {
     }
 
     public void act(float delta){
-        // Desplacem l'objecte per l'eix X
+        //Eje X
         this.posicion.x += this.velocidad * delta;
 
-        // Si es troba fora la pantalla canviem la variable a veritat
+        //True si esta fuera de pantalla
         if(getColaX() < 0){
             this.fueraDePantalla = true;
         }
 
     }
 
-    public void reset(float novaX){
-        this.posicion.x = novaX;
+    public void reset(float nuevaX){
+        this.posicion.x = nuevaX;
         fueraDePantalla = false;
     }
 
