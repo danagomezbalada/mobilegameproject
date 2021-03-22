@@ -7,7 +7,7 @@ public class Configuracion {
     public static final int ALTURA_JUEGO = 135;
 
     // Propietats de la nau
-    public static final int ANCHURA_NATIU = 35;
+    public static final int ANCHURA_NATIVO = 35;
     public static final int ALTURA_NATIVO = 15;
     public static final float VELOCIDAD_NATIVO = 150;
     public static final float X_INICIAL_NATIVO = 20;

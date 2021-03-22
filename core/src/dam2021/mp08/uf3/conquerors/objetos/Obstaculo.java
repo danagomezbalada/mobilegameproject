@@ -9,7 +9,7 @@ public class Obstaculo extends Scrollable{
     private Random r;
 
     public Obstaculo(float x, float y, float velocidad, float anchura, float altura) {
-        //super(x, y, velocidad, anchura, altura);
+        super(x, y, velocidad, anchura, altura);
         this.r = new Random();
 
     }

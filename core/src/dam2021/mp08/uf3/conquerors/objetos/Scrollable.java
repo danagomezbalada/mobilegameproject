@@ -24,7 +24,7 @@ public class Scrollable extends Actor {
         return anchura;
     }
 
-    public float getAlcada() {
+    public float getAltura() {
         return altura;
     }
 
@@ -40,18 +40,18 @@ public class Scrollable extends Actor {
         this.posicion = posicion;
     }
 
-    public void setAlcada(float altura) {
+    public void setAltura(float altura) {
         this.altura = altura;
     }
 
-    public boolean isForaDePantalla() {
+    public boolean isFueraDePantalla() {
         return fueraDePantalla;
     }
     public float getX(){
         return this.posicion.x;
     }
 
-    public float getCuaX(){
+    public float getColaX(){
         return this.posicion.x + anchura;
     }
 
@@ -64,7 +64,7 @@ public class Scrollable extends Actor {
         this.posicion.x += this.velocidad * delta;
 
         // Si es troba fora la pantalla canviem la variable a veritat
-        if(getCuaX() < 0){
+        if(getColaX() < 0){
             this.fueraDePantalla = true;
         }
 
