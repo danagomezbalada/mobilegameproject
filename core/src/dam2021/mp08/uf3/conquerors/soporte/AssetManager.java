@@ -4,9 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class AssetManager {
+
+    public static BitmapFont syneMono;
 
    /* public static Texture textura; //texture sheet
 
@@ -28,6 +31,7 @@ public class AssetManager {
 
 
     public static void load() {
+        syneMono = new BitmapFont(Gdx.files.internal("/fonts/SyneMono-Regular.ttf"));
         /*textura = new Texture(Gdx.files.internal("sheet.png"));
         textura.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest); //filtre textura per que es vegi més nítida
 
