@@ -34,9 +34,10 @@ public class MenuScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
+
         AssetManager.syneMono.draw(game.batch, "Welcome to Drop!!! ", 100, 150);
         AssetManager.syneMono.draw(game.batch, "Tap anywhere to begin!", 100, 100);
-        game.font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
 
 
 

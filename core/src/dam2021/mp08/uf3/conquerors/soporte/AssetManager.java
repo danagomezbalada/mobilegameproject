@@ -31,7 +31,9 @@ public class AssetManager {
 
 
     public static void load() {
-        syneMono = new BitmapFont(Gdx.files.internal("/fonts/SyneMono-Regular.ttf"));
+        Texture syneMonoTexture = new Texture(Gdx.files.internal("fonts/mono_syne_disfont_final.png"));
+        syneMonoTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        syneMono = new BitmapFont(Gdx.files.internal("fonts/mono_syne_disfont_final.fnt"), new TextureRegion(syneMonoTexture), false);
         /*textura = new Texture(Gdx.files.internal("sheet.png"));
         textura.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest); //filtre textura per que es vegi més nítida
 
