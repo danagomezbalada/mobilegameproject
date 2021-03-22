@@ -3,8 +3,8 @@ package dam2021.mp08.uf3.conquerors.utilidades;
 public class Configuracion {
 
     // Mida del joc, automàticament s'escalarà
-    public static final int ANCHURA_JUEGO = 240;
-    public static final int ALTURA_JUEGO = 135;
+    public static final int ANCHURA_JUEGO = 1440;
+    public static final int ALTURA_JUEGO = 2560;
 
     // Propietats de la nau
     public static final int ANCHURA_NATIVO = 35;

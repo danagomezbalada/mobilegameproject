@@ -9,46 +9,46 @@ import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
 public class ScrollHandler extends Group {
 
-    private Background background, background_black;
-    private int numAsteroides;
-    private ArrayList<Obstaculo> asteroides;
+    private Background background, background_back;
+    private int numObstaculos;
+    private ArrayList<Obstaculo> obstaculos;
     private Random r;
 
     public ScrollHandler() {
         //x, y, velocidad, anchura, altura
         this.background = new Background(0, 0, Configuracion.VELOCIDAD_FONDO,
                 Configuracion.ANCHURA_JUEGO * 2, Configuracion.ALTURA_JUEGO);
-        this.background_black = new Background(this.background.getColaX(), 0, Configuracion.VELOCIDAD_FONDO,
+        this.background_back = new Background(this.background.getColaX(), 0, Configuracion.VELOCIDAD_FONDO,
                 Configuracion.ANCHURA_JUEGO * 2, Configuracion.ALTURA_JUEGO);
 
         addActor(background);
-        addActor(background_black);
+        addActor(background_back);
 
         //Obstaculos
         this.r = new Random();
-        this.numAsteroides = 3;
-        this.asteroides = new ArrayList<Obstaculo>();
-        float mida = nuevoTamañoObstaculo();
+        this.numObstaculos = 3;
+        this.obstaculos = new ArrayList<Obstaculo>();
+        float tamaño = nuevoTamañoObstaculo();
 
-        Obstaculo asteroide = new Obstaculo(Configuracion.ANCHURA_JUEGO,
-                posicionYObstaculo(mida),
-                Configuracion.VELOCIDAD_OBSTACULO, mida, mida);
-        this.asteroides.add(asteroide);
-        addActor(asteroide);
+        Obstaculo obstaculo = new Obstaculo(Configuracion.ANCHURA_JUEGO,
+                posicionYObstaculo(tamaño),
+                Configuracion.VELOCIDAD_OBSTACULO, tamaño, tamaño);
+        this.obstaculos.add(obstaculo);
+        addActor(obstaculo);
 
-        for (int i  = 1; i < numAsteroides; i++){
-            mida = nuevoTamañoObstaculo();
-            Obstaculo a = new Obstaculo(
-                    asteroides.get(asteroides.size() - 1).getColaX() + Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
-                    posicionYObstaculo(mida),
-                    Configuracion.VELOCIDAD_OBSTACULO, mida, mida);
-            this.asteroides.add(a);
-            addActor(a);
+        for (int i = 1; i < numObstaculos; i++){
+            tamaño = nuevoTamañoObstaculo();
+            Obstaculo o = new Obstaculo(
+                    obstaculos.get(obstaculos.size() - 1).getColaX() + Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
+                    posicionYObstaculo(tamaño),
+                    Configuracion.VELOCIDAD_OBSTACULO, tamaño, tamaño);
+            this.obstaculos.add(o);
+            addActor(o);
         }
     }
 
     public ArrayList<Obstaculo> getObstaculos() {
-        return asteroides;
+        return obstaculos;
     }
 
     @Override
@@ -57,19 +57,19 @@ public class ScrollHandler extends Group {
 
         //Comprobar si algun elemento se ha salido de pantalla
         if(background.isFueraDePantalla()) {
-            background.reset(background_black.getColaX());
-        } else if (background_black.isFueraDePantalla()){
-            background_black.reset(background.getColaX());
+            background.reset(background_back.getColaX());
+        } else if (background_back.isFueraDePantalla()){
+            background_back.reset(background.getColaX());
         }
 
-        for (int i = 0; i < asteroides.size(); i++) {
-            Obstaculo a = asteroides.get(i);
+        for (int i = 0; i < obstaculos.size(); i++) {
+            Obstaculo a = obstaculos.get(i);
             if(a.isFueraDePantalla()){
                 if(i==0){
-                    a.reset(asteroides.get(asteroides.size()-1).getColaX()
+                    a.reset(obstaculos.get(obstaculos.size()-1).getColaX()
                             + Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                 }else{
-                    a.reset(asteroides.get(i-1).getColaX()
+                    a.reset(obstaculos.get(i-1).getColaX()
                             + Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                 }
             }
