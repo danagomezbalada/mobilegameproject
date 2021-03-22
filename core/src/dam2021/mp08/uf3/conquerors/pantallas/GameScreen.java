@@ -24,12 +24,12 @@ public class GameScreen implements Screen {
     private ScrollHandler scrollHandler;
     private Stage stage;
 
-    private ShapeRenderer renderitzadorDeFigures;
+    private ShapeRenderer renderizadorDeFiguras;
     private Batch conjunt;
 
 
     public GameScreen() {
-        this.renderitzadorDeFigures = new ShapeRenderer();
+        this.renderizadorDeFiguras = new ShapeRenderer();
         OrthographicCamera camera = new OrthographicCamera(
                 Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
 
@@ -81,30 +81,29 @@ public class GameScreen implements Screen {
     }
 
     private void dibujarElementos() {
-        renderitzadorDeFigures.setProjectionMatrix(
+        renderizadorDeFiguras.setProjectionMatrix(
                 conjunt.getProjectionMatrix());
-        renderitzadorDeFigures.begin(ShapeRenderer.ShapeType.Filled);
+        renderizadorDeFiguras.begin(ShapeRenderer.ShapeType.Filled);
 
         //Dibujamos al nativo
-        renderitzadorDeFigures.setColor(new Color(1, 0, 0, 1));
-        renderitzadorDeFigures.rect(nativo.getX(), nativo.getY(),
+        renderizadorDeFiguras.setColor(new Color(1, 0, 0, 1));
+        renderizadorDeFiguras.rect(nativo.getX(), nativo.getY(),
                 nativo.getAnchura(), nativo.getAltura());
 
         //Dibujamos los obstaculos
-        renderitzadorDeFigures.setColor(1, 1, 1, 1);
-        ArrayList<Obstaculo> obstaculos = this.scrollHandler.getAsteroides();
+        renderizadorDeFiguras.setColor(1, 1, 1, 1);
+        ArrayList<Obstaculo> obstaculos = this.scrollHandler.getObstaculos();
         Obstaculo obstaculo;
 
         for (int i = 0; i < obstaculos.size(); i++){
             obstaculo = obstaculos.get(i);
-            renderitzadorDeFigures.circle(
+            renderizadorDeFiguras.circle(
                     obstaculo.getX() + obstaculo.getAnchura()/2,
                     obstaculo.getY() + obstaculo.getAltura()/2,
                     obstaculo.getAnchura()/2);
         }
-        renderitzadorDeFigures.end();
+        renderizadorDeFiguras.end();
     }
-
 
     @Override
     public void resize(int width, int height) {
