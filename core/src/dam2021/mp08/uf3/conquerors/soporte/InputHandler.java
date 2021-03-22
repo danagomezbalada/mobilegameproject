@@ -2,13 +2,20 @@ package dam2021.mp08.uf3.conquerors.soporte;
 
 import com.badlogic.gdx.InputProcessor;
 
+import dam2021.mp08.uf3.conquerors.objetos.Nativo;
+import dam2021.mp08.uf3.conquerors.pantallas.GameScreen;
+
 public class InputHandler implements InputProcessor {
 
-    //variables
+    private Nativo nativo;
+    private GameScreen pantalla;
+    private int previaY = 0;
 
-    public InputHandler() {
-
+    public InputHandler(GameScreen pantalla){
+        this.pantalla = pantalla;
+        this.nativo = this.pantalla.getNativo();
     }
+
 
     @Override
     public boolean keyDown(int keycode) {
@@ -27,17 +34,27 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
+        this.previaY = screenY;
+        return true;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
+        this.nativo.noMover();
+        return true;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
+        //Arriba - Derecha
+        if (this.previaY > screenY){
+            this.nativo.irDerecha();
+        }
+        //Abajo - Izquierda
+        else{
+            this.nativo.irIzquierda();
+        }
+        return true;
     }
 
     @Override
