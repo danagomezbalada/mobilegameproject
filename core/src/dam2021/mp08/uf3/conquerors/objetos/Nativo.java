@@ -12,8 +12,8 @@ public class Nativo extends Actor {
     private Vector2 posicion;
     private boolean estaSaltando;
 
-    public static final int IZQUIERDA =1; //Dalt
-    public static final int DERECHA =2; //Baix
+    public static final int IZQUIERDA =1;
+    public static final int DERECHA =2;
     public static final int QUIETO =0;
 
     public Nativo(int anchura, int altura, float x, float y){
@@ -32,14 +32,14 @@ public class Nativo extends Actor {
     public void act(float delta) {
         //Movimiento nativo
         switch(this.direccion){
-            case IZQUIERDA:
-                if(this.posicion.y - Configuracion.VELOCIDAD_NATIVO * delta >= 0){
-                    this.posicion.y -= Configuracion.VELOCIDAD_NATIVO * delta;
+            case DERECHA:
+                if(this.posicion.x - Configuracion.VELOCIDAD_NATIVO * delta >= 0){
+                    this.posicion.x -= Configuracion.VELOCIDAD_NATIVO * delta;
                 }
                 break;
-            case DERECHA:
-                if(this.posicion.y + this.altura + Configuracion.VELOCIDAD_NATIVO * delta <= Configuracion.ALTURA_JUEGO){
-                    this.posicion.y += Configuracion.VELOCIDAD_NATIVO * delta;
+            case IZQUIERDA:
+                if(this.posicion.x + this.anchura + Configuracion.VELOCIDAD_NATIVO * delta <= Configuracion.ANCHURA_JUEGO){
+                    this.posicion.x += Configuracion.VELOCIDAD_NATIVO * delta;
                 }
                 break;
             case QUIETO:

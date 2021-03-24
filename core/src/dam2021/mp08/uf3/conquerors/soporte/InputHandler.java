@@ -9,7 +9,7 @@ public class InputHandler implements InputProcessor {
 
     private Nativo nativo;
     private GameScreen pantalla;
-    private int previaY = 0;
+    private int previaX = 0;
 
     public InputHandler(GameScreen pantalla){
         this.pantalla = pantalla;
@@ -34,7 +34,7 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        this.previaY = screenY;
+        this.previaX = screenX;
         return true;
     }
 
@@ -46,13 +46,13 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        //Arriba - Derecha
-        if (this.previaY > screenY){
-            this.nativo.irDerecha();
-        }
-        //Abajo - Izquierda
-        else{
+        //Arriba - Izquierda
+        if (this.previaX > screenX){
             this.nativo.irIzquierda();
+        }
+        //Abajo - Derecha
+        else{
+            this.nativo.irDerecha();
         }
         return true;
     }
