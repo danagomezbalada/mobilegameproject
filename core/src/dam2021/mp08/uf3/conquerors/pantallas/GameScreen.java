@@ -69,15 +69,17 @@ public class GameScreen implements Screen {
     }
 
     @Override
-    public void show() {
-
-    }
+    public void show() {}
 
     @Override
     public void render(float delta) {
         this.stage.draw();
         this.stage.act(delta);
-        dibujarElementos();
+        //TODO: Añadir textura y eliminar dibujo de rectángulos
+        if(scrollHandler.hayColision(nativo)) {
+            Gdx.app.log("TOUCH", "NATIVO MUERTO");
+        }
+        //dibujarElementos();
     }
 
     private void dibujarElementos() {
