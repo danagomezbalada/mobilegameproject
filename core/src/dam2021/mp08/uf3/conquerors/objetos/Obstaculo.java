@@ -16,20 +16,20 @@ public class Obstaculo extends Scrollable{
 
     }
 
-    public void reset(float nuevaX) {
-        super.reset(nuevaX);
+    public void reset(float nuevaY) {
+        super.reset(nuevaY);
 
         float tamaño = nuevoTamañoObstaculo();
         setAnchura(tamaño);
         setAltura(tamaño);
-        //valor Y
+        //valor X
         Vector2 nuevaPos = nuevaPosicion(tamaño);
         setPosicion(nuevaPos);
 
     }
 
     private Vector2 nuevaPosicion(float tamaño) {
-        return new Vector2(getX(), (int) (this.r.nextFloat() * (Configuracion.ALTURA_JUEGO - tamaño)));
+        return new Vector2((int) (this.r.nextFloat() * (Configuracion.ANCHURA_JUEGO - tamaño)), getY());
     }
 
     private float nuevoTamañoObstaculo(){

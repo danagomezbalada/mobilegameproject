@@ -48,27 +48,29 @@ public class Scrollable extends Actor {
         return this.posicion.x;
     }
 
-    public float getColaX(){
+    /*public float getColaX(){
         return this.posicion.x + anchura;
-    }
+    }*/
+
+    public float getColaY(){ return this.posicion.y + altura; }
 
     public float getY(){
         return this.posicion.y;
     }
 
     public void act(float delta){
-        //Eje X
-        this.posicion.x += this.velocidad * delta;
+        //Eje Y
+        this.posicion.y += this.velocidad * delta;
 
         //True si esta fuera de pantalla
-        if(getColaX() < 0){
+        if(getColaY() < 0){
             this.fueraDePantalla = true;
         }
 
     }
 
-    public void reset(float nuevaX){
-        this.posicion.x = nuevaX;
+    public void reset(float nuevaY){
+        this.posicion.y = nuevaY;
         fueraDePantalla = false;
     }
 
