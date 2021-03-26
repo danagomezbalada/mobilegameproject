@@ -82,7 +82,7 @@ public class ScrollHandler extends Group {
     }
 
     private int posicionYObstaculo(float mida){
-        return (int) (this.r.nextFloat() * (Configuracion.ALTURA_JUEGO - mida));
+        return (int) (this.r.nextFloat() * (Configuracion.ANCHURA_JUEGO - mida));
     }
 
 }
