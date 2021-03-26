@@ -9,7 +9,7 @@ public class Configuracion {
     //Propiedades del nativo
     public static final int ANCHURA_NATIVO = 150;
     public static final int ALTURA_NATIVO = 350;
-    public static final float VELOCIDAD_NATIVO = 550;
+    public static final float VELOCIDAD_NATIVO = 1050;
     public static final float X_INICIAL_NATIVO = ANCHURA_JUEGO/2 - ANCHURA_NATIVO/2;
     public static final float Y_INICIAL_NATIVO = ALTURA_JUEGO - 500;
 
@@ -20,6 +20,6 @@ public class Configuracion {
     public static final float VELOCIDAD_OBSTACULO = -150;
     public static final float TAMAÑO_MAXIMO_OBSTACULO = 1.5f;
     public static final float TAMAÑO_MINIMO_OBSTACULO = 0.5f;
-    public static final float TAMAÑO_OBSTACULO = 35;
-    public static final float DISTANCIA_ENTRE_OBSTACULOS = 75;
+    public static final float TAMAÑO_OBSTACULO = 70;
+    public static final float DISTANCIA_ENTRE_OBSTACULOS = 145;
 }

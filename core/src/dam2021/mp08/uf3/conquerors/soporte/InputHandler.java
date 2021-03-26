@@ -48,11 +48,11 @@ public class InputHandler implements InputProcessor {
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         //Arriba - Izquierda
         if (this.previaX > screenX){
-            this.nativo.irIzquierda();
+            this.nativo.irDerecha();
         }
         //Abajo - Derecha
         else{
-            this.nativo.irDerecha();
+            this.nativo.irIzquierda();
         }
         return true;
     }

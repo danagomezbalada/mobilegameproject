@@ -63,13 +63,13 @@ public class ScrollHandler extends Group {
         }
 
         for (int i = 0; i < obstaculos.size(); i++) {
-            Obstaculo a = obstaculos.get(i);
-            if(a.isFueraDePantalla()){
+            Obstaculo o = obstaculos.get(i);
+            if(o.isFueraDePantalla()){
                 if(i==0){
-                    a.reset(obstaculos.get(obstaculos.size()-1).getColaY()
+                    o.reset(obstaculos.get(obstaculos.size()-1).getColaY()
                             + Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                 }else{
-                    a.reset(obstaculos.get(i-1).getColaY()
+                    o.reset(obstaculos.get(i-1).getColaY()
                             + Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                 }
             }
