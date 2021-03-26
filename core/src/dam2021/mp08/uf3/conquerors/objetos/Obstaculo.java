@@ -20,14 +20,14 @@ public abstract class Obstaculo extends Scrollable{
         this.r = new Random();
     }
 
-    public void reset(float nuevaX) {
-        super.reset(nuevaX);
+    public void reset(float nuevaY) {
+        super.reset(nuevaY);
 
         //TODO: Modificar y añadir diversos obstáculos
         float tamaño = Configuracion.TAMAÑO_OBSTACULO_AGUJERO;
         setAnchura(tamaño);
         setAltura(tamaño);
-        //valor Y
+        //valor X
         Vector2 nuevaPos = nuevaPosicion(tamaño);
         setPosicion(nuevaPos);
 
@@ -35,7 +35,7 @@ public abstract class Obstaculo extends Scrollable{
 
     //TODO: Cambiar a 3 posicions estáticas (3 carriles)
     private Vector2 nuevaPosicion(float tamaño) {
-        return new Vector2(getX(), (int) (this.r.nextFloat() * (Configuracion.ALTURA_JUEGO - tamaño)));
+        return new Vector2((int) (this.r.nextFloat() * (Configuracion.ANCHURA_JUEGO - tamaño)), getY());
     }
 
     public Circle getHitboxCirc() {

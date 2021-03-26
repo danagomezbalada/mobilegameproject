@@ -8,7 +8,7 @@ import java.util.Random;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
 public class ScrollHandler extends Group {
-
+        //TODO cambiar movimientos en vertical (van del reves abajo->arriba)
     private Background background, background_back;
     private int numObstaculos;
     private ArrayList<Obstaculo> obstaculos;
@@ -18,7 +18,7 @@ public class ScrollHandler extends Group {
         //x, y, velocidad, anchura, altura
         this.background = new Background(0, 0, Configuracion.VELOCIDAD_FONDO,
                 Configuracion.ANCHURA_JUEGO * 2, Configuracion.ALTURA_JUEGO);
-        this.background_back = new Background(this.background.getColaX(), 0, Configuracion.VELOCIDAD_FONDO,
+        this.background_back = new Background(0, this.background.getColaY(), Configuracion.VELOCIDAD_FONDO,
                 Configuracion.ANCHURA_JUEGO * 2, Configuracion.ALTURA_JUEGO);
 
         addActor(background);
@@ -43,7 +43,7 @@ public class ScrollHandler extends Group {
         for (int i = 1; i < numObstaculos; i++){
             tamaño = nuevoTamañoObstaculo();
             Obstaculo o = new Obstaculo(
-                    obstaculos.get(obstaculos.size() - 1).getColaX() + Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
+                    obstaculos.get(obstaculos.size() - 1).getColaY() + Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
                     posicionYObstaculo(tamaño),
                     Configuracion.VELOCIDAD_OBSTACULO, tamaño, tamaño);
             this.obstaculos.add(o);
@@ -63,19 +63,19 @@ public class ScrollHandler extends Group {
 
         //Comprobar si algun elemento se ha salido de pantalla
         if(background.isFueraDePantalla()) {
-            background.reset(background_back.getColaX());
+            background.reset(background_back.getColaY());
         } else if (background_back.isFueraDePantalla()){
-            background_back.reset(background.getColaX());
+            background_back.reset(background.getColaY());
         }
 
         for (int i = 0; i < obstaculos.size(); i++) {
-            Obstaculo a = obstaculos.get(i);
-            if(a.isFueraDePantalla()){
+            Obstaculo o = obstaculos.get(i);
+            if(o.isFueraDePantalla()){
                 if(i==0){
-                    a.reset(obstaculos.get(obstaculos.size()-1).getColaX()
+                    o.reset(obstaculos.get(obstaculos.size()-1).getColaY()
                             + Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                 }else{
-                    a.reset(obstaculos.get(i-1).getColaX()
+                    o.reset(obstaculos.get(i-1).getColaY()
                             + Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                 }
             }
