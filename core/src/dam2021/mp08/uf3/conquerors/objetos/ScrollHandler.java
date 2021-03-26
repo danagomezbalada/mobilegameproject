@@ -28,14 +28,18 @@ public class ScrollHandler extends Group {
         this.r = new Random();
         this.numObstaculos = 3;
         this.obstaculos = new ArrayList<Obstaculo>();
-        float tamaño = nuevoTamañoObstaculo();
+        //TODO: Diferentes tamaños por obstáculo
+        float tamaño = Configuracion.TAMAÑO_OBSTACULO_RAMA;
 
-        Obstaculo obstaculo = new Obstaculo(Configuracion.ANCHURA_JUEGO,
+        //TODO: Creación de obstaculos arreglar
+        /*Obstaculo obstaculo = new Obstaculo(Configuracion.ANCHURA_JUEGO,
                 posicionYObstaculo(tamaño),
                 Configuracion.VELOCIDAD_OBSTACULO, tamaño, tamaño);
         this.obstaculos.add(obstaculo);
-        addActor(obstaculo);
+        addActor(obstaculo);*/
 
+        //TODO: Corregir creación de múltiples obstáculos
+        /*
         for (int i = 1; i < numObstaculos; i++){
             tamaño = nuevoTamañoObstaculo();
             Obstaculo o = new Obstaculo(
@@ -45,6 +49,8 @@ public class ScrollHandler extends Group {
             this.obstaculos.add(o);
             addActor(o);
         }
+
+         */
     }
 
     public ArrayList<Obstaculo> getObstaculos() {
@@ -76,10 +82,18 @@ public class ScrollHandler extends Group {
         }
     }
 
-    private float nuevoTamañoObstaculo(){
-        return (this.r.nextFloat() + Configuracion.TAMAÑO_MINIMO_OBSTACULO)
-                * Configuracion.TAMAÑO_OBSTACULO;
+    public boolean hayColision(Nativo nativo) {
+        //TODO: Añadir lista de obstáculos
+        /*for (Obstaculo a : ) {
+            if(a.hayColision(nativo)) {
+                return true;
+            }
+        }*/
+        return false;
     }
+
+
+    //BORRADO MÉTODO NUEVO TAMAÑO OBSTÁCULO
 
     private int posicionYObstaculo(float mida){
         return (int) (this.r.nextFloat() * (Configuracion.ANCHURA_JUEGO - mida));

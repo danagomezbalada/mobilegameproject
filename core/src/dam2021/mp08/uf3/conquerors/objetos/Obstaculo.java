@@ -1,25 +1,30 @@
 package dam2021.mp08.uf3.conquerors.objetos;
 
+import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.Random;
 
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
+import sun.security.krb5.Config;
 
-public class Obstaculo extends Scrollable{
+public abstract class Obstaculo extends Scrollable{
 
-    private Random r = new Random();
+    private Random r;
+    protected Rectangle hitboxRect;
+    protected Circle hitboxCirc;
 
     public Obstaculo(float x, float y, float velocidad, float anchura, float altura) {
         super(x, y, velocidad, anchura, altura);
         this.r = new Random();
-
     }
 
     public void reset(float nuevaY) {
         super.reset(nuevaY);
 
-        float tamaño = nuevoTamañoObstaculo();
+        //TODO: Modificar y añadir diversos obstáculos
+        float tamaño = Configuracion.TAMAÑO_OBSTACULO_AGUJERO;
         setAnchura(tamaño);
         setAltura(tamaño);
         //valor X
@@ -28,13 +33,18 @@ public class Obstaculo extends Scrollable{
 
     }
 
+    //TODO: Cambiar a 3 posicions estáticas (3 carriles)
     private Vector2 nuevaPosicion(float tamaño) {
         return new Vector2((int) (this.r.nextFloat() * (Configuracion.ANCHURA_JUEGO - tamaño)), getY());
     }
 
-    private float nuevoTamañoObstaculo(){
-        return (this.r.nextFloat() + Configuracion.TAMAÑO_MINIMO_OBSTACULO)
-                * Configuracion.TAMAÑO_OBSTACULO;
-
+    public Circle getHitboxCirc() {
+        return hitboxCirc;
     }
+
+    public Rectangle getHitboxRect() {
+        return hitboxRect;
+    }
+
+    public abstract boolean hayColision(Nativo nativo);
 }

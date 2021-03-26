@@ -1,6 +1,7 @@
 package dam2021.mp08.uf3.conquerors.objetos;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
@@ -16,11 +17,15 @@ public class Nativo extends Actor {
     public static final int DERECHA =2;
     public static final int QUIETO =0;
 
+    private Rectangle hitbox;
+
     public Nativo(int anchura, int altura, float x, float y){
         this.anchura = anchura;
         this.altura = altura;
         this.posicion = new Vector2(x,y);
         this.direccion = QUIETO;
+
+        this.hitbox = new Rectangle();
     }
 
     @Override
@@ -46,6 +51,8 @@ public class Nativo extends Actor {
                 break;
         }
 
+        //TODO: Modificar valores de la hitbox del nativo
+        this.hitbox.set(getX(), getY(), getAnchura(), getAltura());
     }
 
     public int getAnchura() { return anchura; }
@@ -55,6 +62,9 @@ public class Nativo extends Actor {
     }
     public float getY() {
         return posicion.y;
+    }
+    public Rectangle getHitboxNativo() {
+        return hitbox;
     }
 
     public void irIzquierda() {
