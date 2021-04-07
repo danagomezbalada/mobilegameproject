@@ -11,7 +11,7 @@ public class AssetManager {
 
     public static BitmapFont syneMono;
 
-   /* public static Texture textura; //texture sheet
+   public static Texture textura;
 
     //imatge nau
     public static TextureRegion nau, nauBaixa, nauDalt;
@@ -21,9 +21,13 @@ public class AssetManager {
     public static TextureRegion[] asteroides;
     public static Animation animationAsteroides;
 
+    //Imagen nativo
+    public static TextureRegion[] personage;
+    public static Animation animationPersonage;
+
     //explosions
     public static TextureRegion[] explosions;
-    public static Animation animationExplosio;*/
+    public static Animation animationExplosio;
 
     public AssetManager() {
 
@@ -34,6 +38,8 @@ public class AssetManager {
         Texture syneMonoTexture = new Texture(Gdx.files.internal("fonts/mono_syne_disfont_final.png"));
         syneMonoTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         syneMono = new BitmapFont(Gdx.files.internal("fonts/mono_syne_disfont_final.fnt"), new TextureRegion(syneMonoTexture), false);
+
+
         /*textura = new Texture(Gdx.files.internal("sheet.png"));
         textura.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest); //filtre textura per que es vegi més nítida
 
@@ -51,6 +57,33 @@ public class AssetManager {
             asteroides[i] = new TextureRegion(textura, i * 34, 15, 34, 34);
             asteroides[i].flip(false, true);
         }
+
+        */
+
+        textura = new Texture(Gdx.files.internal("Personage.png"));
+
+        //Imagen nativo array
+        personage = new TextureRegion[8];
+
+        for(int i=0; i<(personage.length/2); i++){
+
+            //Eso mueve el personaje para un lado
+            personage[i] = new TextureRegion(textura, i * 64, 0, 58, 70);
+            personage[i].flip(false, true);
+
+            //Este para el otro lado
+            personage[i+(personage.length/2)] = new TextureRegion(personage[i]);
+            personage[i+(personage.length/2)].flip(true, false);
+
+        }
+
+
+        // Animacion nativo, el primer numero del contructor animation es la velocidad de la animacion
+        animationPersonage = new Animation(0.10f, personage);
+        animationPersonage.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
+
+
+        /*
 
         //animacio asteroides
         animationAsteroides = new Animation(0.05f, asteroides);

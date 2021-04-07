@@ -1,9 +1,13 @@
 package dam2021.mp08.uf3.conquerors.objetos;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import java.util.Random;
+
+import dam2021.mp08.uf3.conquerors.soporte.AssetManager;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
 public class Nativo extends Actor {
@@ -16,20 +20,28 @@ public class Nativo extends Actor {
     public static final int DERECHA =2; //Baix
     public static final int QUIETO =0;
 
+    private Random r = new Random();
+    private float tiempo;
+
     public Nativo(int anchura, int altura, float x, float y){
         this.anchura = anchura;
         this.altura = altura;
         this.posicion = new Vector2(x,y);
         this.direccion = QUIETO;
+        this.tiempo = r.nextFloat();
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
+        //Coje la animacion del nativo
         super.draw(batch, parentAlpha);
+        batch.draw((TextureRegion) AssetManager.animationPersonage.getKeyFrame(this.tiempo), this.getX(), this.getY(), this.getAnchura(), this.getAltura());
+
     }
 
     @Override
     public void act(float delta) {
+        this.tiempo+=delta;
         //Movimiento nativo
         switch(this.direccion){
             case IZQUIERDA:
