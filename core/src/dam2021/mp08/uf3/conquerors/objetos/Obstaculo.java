@@ -34,8 +34,18 @@ public abstract class Obstaculo extends Scrollable{
     }
 
     //TODO: Cambiar a 3 posicions estáticas (3 carriles)
-    private Vector2 nuevaPosicion(float tamaño) {
-        return new Vector2((int) (this.r.nextFloat() * (Configuracion.ANCHURA_JUEGO - tamaño)), getY());
+    public Vector2 nuevaPosicion(float tamaño) {
+        int pos = r.nextInt(3);
+        switch (pos) {
+            case 0:
+                return new Vector2(Configuracion.CARRIL_IZQUIERDO, 0);
+            case 1:
+                return new Vector2(Configuracion.CARRIL_CENTRAL, 0);
+            case 2:
+                return new Vector2(Configuracion.CARRIL_DERECHO, 0);
+            default:
+                return new Vector2(Configuracion.CARRIL_CENTRAL, 0);
+        }
     }
 
     public Circle getHitboxCirc() {

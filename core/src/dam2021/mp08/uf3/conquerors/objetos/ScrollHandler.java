@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import java.util.ArrayList;
 import java.util.Random;
 
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Agujero;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
 public class ScrollHandler extends Group {
@@ -26,31 +27,30 @@ public class ScrollHandler extends Group {
 
         //Obstaculos
         this.r = new Random();
-        this.numObstaculos = 3;
+        this.numObstaculos = 20;
         this.obstaculos = new ArrayList<Obstaculo>();
         //TODO: Diferentes tamaños por obstáculo
         float tamaño = Configuracion.TAMAÑO_OBSTACULO_RAMA;
 
         //TODO: Creación de obstaculos arreglar
-        /*Obstaculo obstaculo = new Obstaculo(Configuracion.ANCHURA_JUEGO,
+        Obstaculo agujero = new Agujero(Configuracion.ANCHURA_JUEGO,
                 posicionYObstaculo(tamaño),
                 Configuracion.VELOCIDAD_OBSTACULO, tamaño, tamaño);
-        this.obstaculos.add(obstaculo);
-        addActor(obstaculo);*/
+        this.obstaculos.add(agujero);
+        addActor(agujero);
 
         //TODO: Corregir creación de múltiples obstáculos
-        /*
+
         for (int i = 1; i < numObstaculos; i++){
-            tamaño = nuevoTamañoObstaculo();
-            Obstaculo o = new Obstaculo(
+            Obstaculo a = new Agujero(
                     obstaculos.get(obstaculos.size() - 1).getColaY() + Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
                     posicionYObstaculo(tamaño),
                     Configuracion.VELOCIDAD_OBSTACULO, tamaño, tamaño);
-            this.obstaculos.add(o);
-            addActor(o);
+            this.obstaculos.add(a);
+            addActor(a);
         }
 
-         */
+
     }
 
     public ArrayList<Obstaculo> getObstaculos() {
@@ -72,11 +72,11 @@ public class ScrollHandler extends Group {
             Obstaculo o = obstaculos.get(i);
             if(o.isFueraDePantalla()){
                 if(i==0){
-                    o.reset(obstaculos.get(obstaculos.size()-1).getColaY()
-                            + Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
+                    o.reset(0);
+                    //o.reset(obstaculos.get(obstaculos.size()-1).getColaY()
+                            //+ Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                 }else{
-                    o.reset(obstaculos.get(i-1).getColaY()
-                            + Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
+                    o.reset(0);
                 }
             }
         }

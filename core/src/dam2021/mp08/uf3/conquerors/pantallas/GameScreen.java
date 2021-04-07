@@ -80,7 +80,7 @@ public class GameScreen implements Screen {
         if(scrollHandler.hayColision(nativo)) {
             Gdx.app.log("TOUCH", "NATIVO MUERTO");
         }
-        //dibujarElementos();
+        dibujarElementos();
     }
 
     private void dibujarElementos() {
