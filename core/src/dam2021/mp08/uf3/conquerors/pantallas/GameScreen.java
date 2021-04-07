@@ -80,13 +80,9 @@ public class GameScreen implements Screen {
         if(scrollHandler.hayColision(nativo)) {
             Gdx.app.log("TOUCH", "NATIVO MUERTO");
         }
-        //dibujarElementos();
+        dibujarElementos();
     }
-
     private void dibujarElementos() {
-
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         renderizadorDeFiguras.setProjectionMatrix(
                 conjunto.getProjectionMatrix());
@@ -96,19 +92,6 @@ public class GameScreen implements Screen {
         renderizadorDeFiguras.setColor(new Color(1, 0, 0, 1));
         renderizadorDeFiguras.rect(nativo.getX(), nativo.getY(),
                 nativo.getAnchura(), nativo.getAltura());
-
-        //Dibujamos los obstaculos
-        renderizadorDeFiguras.setColor(1, 1, 1, 1);
-        ArrayList<Obstaculo> obstaculos = this.scrollHandler.getObstaculos();
-        Obstaculo obstaculo;
-
-        for (int i = 0; i < obstaculos.size(); i++){
-            obstaculo = obstaculos.get(i);
-            renderizadorDeFiguras.circle(
-                    obstaculo.getX() + obstaculo.getAnchura()/2,
-                    obstaculo.getY() + obstaculo.getAltura()/2,
-                    obstaculo.getAnchura()/2);
-        }
         renderizadorDeFiguras.end();
     }
 

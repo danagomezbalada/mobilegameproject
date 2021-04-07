@@ -3,8 +3,8 @@ package dam2021.mp08.uf3.conquerors.utilidades;
 public class Configuracion {
 
     //Tamaño del juego
-    public static final int ANCHURA_JUEGO = 1440;
-    public static final int ALTURA_JUEGO = 2560;
+    public static final int ANCHURA_JUEGO = 720;
+    public static final int ALTURA_JUEGO = 1280;
 
     //Propiedades del nativo
     public static final int ANCHURA_NATIVO = 150;
@@ -22,5 +22,9 @@ public class Configuracion {
     public static final float TAMAÑO_OBSTACULO_BOMBA = 35;
     public static final float TAMAÑO_OBSTACULO_RAMA = 35;
     public static final float TAMAÑO_OBSTACULO_AGUJERO = 35;
+
+    public static final float CARRIL_IZQUIERDO = ANCHURA_JUEGO/4;
+    public static final float CARRIL_CENTRAL = ANCHURA_JUEGO/2;
+    public static final float CARRIL_DERECHO = ANCHURA_JUEGO/1.333333333333f;
 
 }

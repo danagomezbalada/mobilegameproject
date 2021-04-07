@@ -33,28 +33,29 @@ public class InputHandler implements InputProcessor {
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) { ;
         this.previaX = screenX;
         return true;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        this.nativo.noMover();
+        System.out.println(screenX + " : " + previaX);
+        if (this.previaX < screenX){
+            System.out.println("DERECHA");
+            this.nativo.irDerecha();
+        }
+        //Abajo - Derecha
+        else{
+            System.out.println("IZQUIERDA");
+            this.nativo.irIzquierda();
+        }
         return true;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        //Arriba - Izquierda
-        if (this.previaX > screenX){
-            this.nativo.irDerecha();
-        }
-        //Abajo - Derecha
-        else{
-            this.nativo.irIzquierda();
-        }
-        return true;
+        return false;
     }
 
     @Override

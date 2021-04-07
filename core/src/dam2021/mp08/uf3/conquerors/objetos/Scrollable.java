@@ -4,6 +4,8 @@ package dam2021.mp08.uf3.conquerors.objetos;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
+
 public class Scrollable extends Actor {
 
     private Vector2 posicion;
@@ -52,7 +54,7 @@ public class Scrollable extends Actor {
         return this.posicion.x + anchura;
     }*/
 
-    public float getColaY(){ return this.posicion.y + altura; }
+    public float getColaY(){ return this.posicion.y - Configuracion.ALTURA_JUEGO; }
 
     public float getY(){
         return this.posicion.y;
@@ -60,10 +62,10 @@ public class Scrollable extends Actor {
 
     public void act(float delta){
         //Eje Y
-        this.posicion.y += this.velocidad * delta;
+        this.posicion.y -= this.velocidad * delta;
 
         //True si esta fuera de pantalla
-        if(getColaY() < 0){
+        if(getY() > Configuracion.ALTURA_JUEGO){
             this.fueraDePantalla = true;
         }
 

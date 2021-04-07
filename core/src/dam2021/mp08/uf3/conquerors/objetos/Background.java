@@ -14,8 +14,8 @@ public class Background extends Scrollable {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         batch.disableBlending();
-        //batch.draw(AssetManager.fonsDePantalla, getX(), getY(),
-               // getAnchura(), getAltura());
+        batch.draw(AssetManager.fonsDePantalla, getX(), getY(),
+               getAnchura(), getAltura());
         batch.enableBlending();
 
     }

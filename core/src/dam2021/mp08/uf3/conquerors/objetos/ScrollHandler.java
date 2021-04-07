@@ -17,9 +17,9 @@ public class ScrollHandler extends Group {
     public ScrollHandler() {
         //x, y, velocidad, anchura, altura
         this.background = new Background(0, 0, Configuracion.VELOCIDAD_FONDO,
-                Configuracion.ANCHURA_JUEGO * 2, Configuracion.ALTURA_JUEGO);
+                Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
         this.background_back = new Background(0, this.background.getColaY(), Configuracion.VELOCIDAD_FONDO,
-                Configuracion.ANCHURA_JUEGO * 2, Configuracion.ALTURA_JUEGO);
+                Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
 
         addActor(background);
         addActor(background_back);
@@ -60,13 +60,14 @@ public class ScrollHandler extends Group {
     @Override
     public void act(float delta) {
         super.act(delta);
-
         //Comprobar si algun elemento se ha salido de pantalla
         if(background.isFueraDePantalla()) {
-            background.reset(background_back.getColaY());
+            background.reset(this.background_back.getColaY());
         } else if (background_back.isFueraDePantalla()){
-            background_back.reset(background.getColaY());
+            background_back.reset(this.background.getColaY());
         }
+
+
 
         for (int i = 0; i < obstaculos.size(); i++) {
             Obstaculo o = obstaculos.get(i);
