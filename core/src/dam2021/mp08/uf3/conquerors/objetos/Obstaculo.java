@@ -6,6 +6,9 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.Random;
 
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Agujero;
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Bomba;
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Rama;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 import sun.security.krb5.Config;
 
@@ -24,32 +27,38 @@ public abstract class Obstaculo extends Scrollable{
     public void reset(float nuevaY) {
         super.reset(nuevaY);
 
-        //TODO: Modificar y añadir diversos obstáculos
-        float tamaño = Configuracion.TAMAÑO_OBSTACULO_AGUJERO;
-        setAnchura(tamaño);
-        setAltura(tamaño);
+        if (this instanceof Agujero){
+            setAnchura(Configuracion.TAMAÑO_OBSTACULO_AGUJERO);
+            setAltura(Configuracion.TAMAÑO_OBSTACULO_AGUJERO);
+        } else if (this instanceof Bomba){
+            setAnchura(Configuracion.TAMAÑO_OBSTACULO_BOMBA);
+            setAltura(Configuracion.TAMAÑO_OBSTACULO_BOMBA);
+        } else if (this instanceof Rama){
+            setAnchura(Configuracion.TAMAÑO_ANCHURA_OBSTACULO_RAMA);
+            setAltura(Configuracion.TAMAÑO_ALTURA_OBSTACULO_RAMA);
+        }
+
         //valor X
         Vector2 nuevaPos = nuevaPosicion();
         setPosicion(nuevaPos);
 
     }
 
-    //TODO: Cambiar a 3 posicions estáticas (3 carriles)
     public Vector2 nuevaPosicion() {
         int pos = r.nextInt(3);
         switch (pos) {
             case 0:
                 carrilActual = 0;
-                return new Vector2(Configuracion.CARRIL_IZQUIERDO, 0);
+                return new Vector2(Configuracion.CARRIL_IZQUIERDO - getAnchura()/2, 0 - Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
             case 1:
                 carrilActual = 1;
-                return new Vector2(Configuracion.CARRIL_CENTRAL, 0);
+                return new Vector2(Configuracion.CARRIL_CENTRAL - getAnchura()/2, 0 - Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
             case 2:
                 carrilActual = 2;
-                return new Vector2(Configuracion.CARRIL_DERECHO, 0);
+                return new Vector2(Configuracion.CARRIL_DERECHO - getAnchura()/2, 0 - Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
             default:
                 carrilActual = 1;
-                return new Vector2(Configuracion.CARRIL_CENTRAL, 0);
+                return new Vector2(Configuracion.CARRIL_CENTRAL - getAnchura()/2, 0 - Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
         }
     }
 
