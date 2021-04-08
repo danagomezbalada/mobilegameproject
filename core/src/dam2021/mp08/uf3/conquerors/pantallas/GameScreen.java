@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import dam2021.mp08.uf3.conquerors.objetos.Nativo;
 import dam2021.mp08.uf3.conquerors.objetos.Obstaculo;
 import dam2021.mp08.uf3.conquerors.objetos.ScrollHandler;
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Agujero;
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Bomba;
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Rama;
 import dam2021.mp08.uf3.conquerors.soporte.InputHandler;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
@@ -92,6 +95,38 @@ public class GameScreen implements Screen {
         renderizadorDeFiguras.setColor(new Color(1, 0, 0, 1));
         renderizadorDeFiguras.rect(nativo.getX(), nativo.getY(),
                 nativo.getAnchura(), nativo.getAltura());
+
+        //Dibujamos los obstaculos
+        ArrayList<Obstaculo> obstaculos = this.scrollHandler.getObstaculos();
+        Obstaculo obstaculo;
+
+        for (int i = 0; i < obstaculos.size(); i++){
+            obstaculo = obstaculos.get(i);
+            //TODO: Cambiar colores de obstaculos por imagenes
+            if (obstaculo instanceof Agujero){
+                renderizadorDeFiguras.setColor(1, 1, 1, 1);
+                renderizadorDeFiguras.circle(
+                        obstaculo.getX() + obstaculo.getAnchura()/2,
+                        obstaculo.getY() + obstaculo.getAltura()/2,
+                        obstaculo.getAnchura()/2);
+            }
+
+            else if (obstaculo instanceof Bomba){
+                renderizadorDeFiguras.setColor(0, 0, 1, 1);
+                renderizadorDeFiguras.circle(
+                        obstaculo.getX() + obstaculo.getAnchura()/2,
+                        obstaculo.getY() + obstaculo.getAltura()/2,
+                        obstaculo.getAnchura()/2);
+            }
+
+            else if (obstaculo instanceof Rama){
+                renderizadorDeFiguras.setColor(1, 0, 0, 1);
+                renderizadorDeFiguras.rect(obstaculo.getX(), obstaculo.getY(),
+                        obstaculo.getAnchura(), obstaculo.getAltura());
+            }
+
+
+        }
         renderizadorDeFiguras.end();
     }
 
