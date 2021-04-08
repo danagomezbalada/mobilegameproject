@@ -9,16 +9,10 @@ import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Agujero;
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Bomba;
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Rama;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
-import sun.security.krb5.Config;
 
 public class ScrollHandler extends Group {
         //TODO cambiar movimientos en vertical (van del reves abajo->arriba)
     private Background background, background_back;
-    private Bomba bomba;
-    private Rama rama;
-    private Agujero agujero;
-    private int numObstaculos;
-
     private int numAgujeros, numBombas, numRamas;
     private ArrayList<Obstaculo> obstaculos;
     private Random r;
@@ -29,9 +23,6 @@ public class ScrollHandler extends Group {
                 Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
         this.background_back = new Background(0, this.background.getColaY(), Configuracion.VELOCIDAD_FONDO,
                 Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
-        this.bomba = new Bomba(0, 0, Configuracion.VELOCIDAD_FONDO, 100, 130); //TODO: ASIGNAR VALORES CORRECTOS DE TAMAÑO
-        this.rama = new Rama(0, 0, Configuracion.VELOCIDAD_FONDO, 100, 130);
-        this.agujero = new Agujero(0, 0, Configuracion.VELOCIDAD_FONDO, 30, 30);
 
         addActor(background);
         addActor(background_back);
@@ -68,7 +59,7 @@ public class ScrollHandler extends Group {
         for (int i = 1; i < numAgujeros; i++){
             agujero = new Agujero(
                     posicionXObstaculo(agujero),
-                    obstaculos.get(obstaculos.size() - 1).getColaY() - Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
+                    obstaculos.get(obstaculos.size() - 1).getColaYObstaculo() - Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
                     Configuracion.VELOCIDAD_OBSTACULO, Configuracion.TAMAÑO_OBSTACULO_AGUJERO, Configuracion.TAMAÑO_OBSTACULO_AGUJERO);
             this.obstaculos.add(agujero);
             addActor(agujero);
@@ -77,7 +68,7 @@ public class ScrollHandler extends Group {
         for (int i = 1; i < numBombas; i++){
             bomba = new Bomba(
                     posicionXObstaculo(bomba),
-                    obstaculos.get(obstaculos.size() - 1).getColaY() - Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
+                    obstaculos.get(obstaculos.size() - 1).getColaYObstaculo() - Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
                     Configuracion.VELOCIDAD_OBSTACULO, Configuracion.TAMAÑO_OBSTACULO_BOMBA, Configuracion.TAMAÑO_OBSTACULO_BOMBA);
             this.obstaculos.add(bomba);
             addActor(bomba);
@@ -87,7 +78,7 @@ public class ScrollHandler extends Group {
         for (int i = 1; i < numRamas; i++){
             rama = new Rama(
                     posicionXObstaculo(rama),
-                    obstaculos.get(obstaculos.size() - 1).getColaY() - Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
+                    obstaculos.get(obstaculos.size() - 1).getColaYObstaculo() - Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
                     Configuracion.VELOCIDAD_OBSTACULO, Configuracion.TAMAÑO_ANCHURA_OBSTACULO_RAMA, Configuracion.TAMAÑO_ALTURA_OBSTACULO_RAMA);
             this.obstaculos.add(rama);
             addActor(rama);
@@ -101,6 +92,7 @@ public class ScrollHandler extends Group {
     @Override
     public void act(float delta) {
         super.act(delta);
+
         //Comprobar si algun elemento se ha salido de pantalla
         if(background.isFueraDePantalla()) {
             background.reset(this.background_back.getColaY());
@@ -108,15 +100,11 @@ public class ScrollHandler extends Group {
             background_back.reset(this.background.getColaY());
         }
 
-        System.out.println(obstaculos.get(0).getY());
-
-
-
         for (int i = 0; i < obstaculos.size(); i++) {
             Obstaculo o = obstaculos.get(i);
             if(o.isFueraDePantalla()){
                 if(i==0){
-                    o.reset(0);
+                    o.reset(0 - Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                     //o.reset(obstaculos.get(obstaculos.size()-1).getColaY()
                             //+ Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                 }else{

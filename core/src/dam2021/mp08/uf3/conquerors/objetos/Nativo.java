@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
-import jdk.internal.org.jline.utils.OSUtils;
 
 public class Nativo extends Actor {
 

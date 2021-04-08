@@ -56,6 +56,8 @@ public class Scrollable extends Actor {
 
     public float getColaY(){ return this.posicion.y - Configuracion.ALTURA_JUEGO; }
 
+    public float getColaYObstaculo(){ return this.posicion.y + altura; }
+
     public float getY(){
         return this.posicion.y;
     }
