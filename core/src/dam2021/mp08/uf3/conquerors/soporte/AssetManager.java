@@ -1,9 +1,7 @@
 package dam2021.mp08.uf3.conquerors.soporte;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -13,9 +11,9 @@ public class AssetManager {
 
     public static BitmapFont syneMono;
 
-    public static TextureRegion personajeQuieto, fonsDePantalla;
+    public static TextureRegion personajeQuieto, fonsDePantalla, bomba, rama, agujero;
 
-    public static Texture textura; //texture sheet
+    public static Texture texturaBackground, texturaBomba, texturaRama, texturaAgujero; //texture sheet
     /*
     //imatge nau
     public static TextureRegion nau, nauBaixa, nauDalt;
@@ -39,7 +37,10 @@ public class AssetManager {
         syneMonoTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         syneMono = new BitmapFont(Gdx.files.internal("fonts/mono_syne_disfont_final.fnt"), new TextureRegion(syneMonoTexture), false);
 
-        textura = new Texture(Gdx.files.internal("img/background.png"));
+        texturaBackground = new Texture(Gdx.files.internal("img/background.png"));
+        texturaBomba = new Texture(Gdx.files.internal("img/bomb.png"));
+        texturaRama = new Texture(Gdx.files.internal("img/branch.png"));
+        texturaAgujero = new Texture(Gdx.files.internal("img/agujero.png"));
 
         personajeQuieto = new TextureRegion();
 
@@ -80,7 +81,10 @@ public class AssetManager {
         animationExplosio = new Animation(0.04f, explosions);
         animationExplosio.setPlayMode(Animation.PlayMode.NORMAL);
 */
-        fonsDePantalla = new TextureRegion(textura, 0, 177, Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
+        fonsDePantalla = new TextureRegion(texturaBackground, 0, 177, Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
+        bomba = new TextureRegion(texturaBomba, 0,205, 100, 130); //TODO: Asignar valores correctos de tamaño
+        rama = new TextureRegion(texturaRama, 0, 200, 100, 130);
+        agujero = new TextureRegion(texturaAgujero, 0, 30, 30, 30);
     }
 
     public static void dispose() {

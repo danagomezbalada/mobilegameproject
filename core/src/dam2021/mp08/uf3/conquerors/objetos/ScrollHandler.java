@@ -5,11 +5,18 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import java.util.ArrayList;
 import java.util.Random;
 
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Agujero;
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Bomba;
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Rama;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
+import sun.security.krb5.Config;
 
 public class ScrollHandler extends Group {
         //TODO cambiar movimientos en vertical (van del reves abajo->arriba)
     private Background background, background_back;
+    private Bomba bomba;
+    private Rama rama;
+    private Agujero agujero;
     private int numObstaculos;
     private ArrayList<Obstaculo> obstaculos;
     private Random r;
@@ -20,6 +27,9 @@ public class ScrollHandler extends Group {
                 Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
         this.background_back = new Background(0, this.background.getColaY(), Configuracion.VELOCIDAD_FONDO,
                 Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
+        this.bomba = new Bomba(0, 0, Configuracion.VELOCIDAD_FONDO, 100, 130); //TODO: ASIGNAR VALORES CORRECTOS DE TAMAÑO
+        this.rama = new Rama(0, 0, Configuracion.VELOCIDAD_FONDO, 100, 130);
+        this.agujero = new Agujero(0, 0, Configuracion.VELOCIDAD_FONDO, 30, 30);
 
         addActor(background);
         addActor(background_back);
