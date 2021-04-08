@@ -60,7 +60,7 @@ public class AssetManager {
 
         */
 
-        textura = new Texture(Gdx.files.internal("Personage.png"));
+        textura = new Texture(Gdx.files.internal("Imagen/Personage.png"));
 
         //Imagen nativo array
         personage = new TextureRegion[8];
@@ -68,7 +68,7 @@ public class AssetManager {
         for(int i=0; i<(personage.length/2); i++){
 
             //Eso mueve el personaje para un lado
-            personage[i] = new TextureRegion(textura, i * 64, 0, 58, 70);
+            personage[i] = new TextureRegion(textura, i * 64, 0, 58, 63);
             personage[i].flip(false, true);
 
             //Este para el otro lado
