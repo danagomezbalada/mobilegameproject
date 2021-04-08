@@ -30,9 +30,4 @@ public class Configuracion {
     public static final float CARRIL_CENTRAL = ANCHURA_JUEGO/2;
     public static final float CARRIL_DERECHO = ANCHURA_JUEGO/1.333333333333f;
 
-
-    public static final float CARRIL_IZQUIERDO = ANCHURA_JUEGO/4;
-    public static final float CARRIL_CENTRAL = ANCHURA_JUEGO/2;
-    public static final float CARRIL_DERECHO = ANCHURA_JUEGO/1.333333333333f;
-
 }

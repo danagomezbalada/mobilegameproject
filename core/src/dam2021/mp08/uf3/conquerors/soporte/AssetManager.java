@@ -40,7 +40,7 @@ public class AssetManager {
         texturaBackground = new Texture(Gdx.files.internal("img/background.png"));
         texturaBomba = new Texture(Gdx.files.internal("img/bomb.png"));
         texturaRama = new Texture(Gdx.files.internal("img/branch.png"));
-        texturaAgujero = new Texture(Gdx.files.internal("img/agujero.png"));
+        texturaAgujero = new Texture(Gdx.files.internal("img/hole.png"));
 
         personajeQuieto = new TextureRegion();
 

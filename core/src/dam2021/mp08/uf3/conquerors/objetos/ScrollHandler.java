@@ -92,8 +92,6 @@ public class ScrollHandler extends Group {
             this.obstaculos.add(rama);
             addActor(rama);
         }
-
-
     }
 
     public ArrayList<Obstaculo> getObstaculos() {
@@ -110,13 +108,15 @@ public class ScrollHandler extends Group {
             background_back.reset(this.background.getColaY());
         }
 
+        System.out.println(obstaculos.get(0).getY());
+
 
 
         for (int i = 0; i < obstaculos.size(); i++) {
             Obstaculo o = obstaculos.get(i);
             if(o.isFueraDePantalla()){
                 if(i==0){
-                    o.reset(0 - Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
+                    o.reset(0);
                     //o.reset(obstaculos.get(obstaculos.size()-1).getColaY()
                             //+ Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                 }else{
