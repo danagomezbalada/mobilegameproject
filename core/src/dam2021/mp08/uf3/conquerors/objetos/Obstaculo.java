@@ -14,6 +14,7 @@ public abstract class Obstaculo extends Scrollable{
     private Random r;
     protected Rectangle hitboxRect;
     protected Circle hitboxCirc;
+    private int carrilActual; //0 -> Izquierda  1 -> Centro  2 -> Derecha
 
     public Obstaculo(float x, float y, float velocidad, float anchura, float altura) {
         super(x, y, velocidad, anchura, altura);
@@ -28,22 +29,26 @@ public abstract class Obstaculo extends Scrollable{
         setAnchura(tamaño);
         setAltura(tamaño);
         //valor X
-        Vector2 nuevaPos = nuevaPosicion(tamaño);
+        Vector2 nuevaPos = nuevaPosicion();
         setPosicion(nuevaPos);
 
     }
 
     //TODO: Cambiar a 3 posicions estáticas (3 carriles)
-    public Vector2 nuevaPosicion(float tamaño) {
+    public Vector2 nuevaPosicion() {
         int pos = r.nextInt(3);
         switch (pos) {
             case 0:
+                carrilActual = 0;
                 return new Vector2(Configuracion.CARRIL_IZQUIERDO, 0);
             case 1:
+                carrilActual = 1;
                 return new Vector2(Configuracion.CARRIL_CENTRAL, 0);
             case 2:
+                carrilActual = 2;
                 return new Vector2(Configuracion.CARRIL_DERECHO, 0);
             default:
+                carrilActual = 1;
                 return new Vector2(Configuracion.CARRIL_CENTRAL, 0);
         }
     }
@@ -56,5 +61,8 @@ public abstract class Obstaculo extends Scrollable{
         return hitboxRect;
     }
 
+    public int getCarrilActual(){return carrilActual;}
+
     public abstract boolean hayColision(Nativo nativo);
+
 }

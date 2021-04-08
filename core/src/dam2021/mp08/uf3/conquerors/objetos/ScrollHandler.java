@@ -6,12 +6,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Agujero;
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Bomba;
+import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Rama;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
 public class ScrollHandler extends Group {
         //TODO cambiar movimientos en vertical (van del reves abajo->arriba)
     private Background background, background_back;
-    private int numObstaculos;
+    private int numAgujeros, numBombas, numRamas;
     private ArrayList<Obstaculo> obstaculos;
     private Random r;
 
@@ -27,27 +29,59 @@ public class ScrollHandler extends Group {
 
         //Obstaculos
         this.r = new Random();
-        this.numObstaculos = 20;
+        this.numAgujeros = 3;
+        this.numBombas = 2;
+        this.numRamas = 5;
         this.obstaculos = new ArrayList<Obstaculo>();
         //TODO: Diferentes tamaños por obstáculo
-        float tamaño = Configuracion.TAMAÑO_OBSTACULO_RAMA;
 
         //TODO: Creación de obstaculos arreglar
         Obstaculo agujero = new Agujero(Configuracion.ANCHURA_JUEGO,
-                posicionYObstaculo(tamaño),
-                Configuracion.VELOCIDAD_OBSTACULO, tamaño, tamaño);
+                0,
+                Configuracion.VELOCIDAD_OBSTACULO, Configuracion.TAMAÑO_OBSTACULO_AGUJERO, Configuracion.TAMAÑO_OBSTACULO_AGUJERO);
         this.obstaculos.add(agujero);
         addActor(agujero);
 
-        //TODO: Corregir creación de múltiples obstáculos
+        Obstaculo bomba = new Bomba(Configuracion.ANCHURA_JUEGO,
+                0,
+                Configuracion.VELOCIDAD_OBSTACULO, Configuracion.TAMAÑO_OBSTACULO_BOMBA, Configuracion.TAMAÑO_OBSTACULO_BOMBA);
+        this.obstaculos.add(bomba);
+        addActor(bomba);
 
-        for (int i = 1; i < numObstaculos; i++){
-            Obstaculo a = new Agujero(
-                    obstaculos.get(obstaculos.size() - 1).getColaY() + Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
-                    posicionYObstaculo(tamaño),
-                    Configuracion.VELOCIDAD_OBSTACULO, tamaño, tamaño);
-            this.obstaculos.add(a);
-            addActor(a);
+        Obstaculo rama = new Agujero(Configuracion.ANCHURA_JUEGO,
+                0,
+                Configuracion.VELOCIDAD_OBSTACULO, Configuracion.TAMAÑO_ANCHURA_OBSTACULO_RAMA, Configuracion.TAMAÑO_ALTURA_OBSTACULO_RAMA);
+        this.obstaculos.add(rama);
+        addActor(rama);
+
+        //TODO: Corregir creación de múltiples obstáculos
+        //Creacion de agujeros
+        for (int i = 1; i < numAgujeros; i++){
+            agujero = new Agujero(
+                    posicionXObstaculo(agujero),
+                    obstaculos.get(obstaculos.size() - 1).getColaY() - Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
+                    Configuracion.VELOCIDAD_OBSTACULO, Configuracion.TAMAÑO_OBSTACULO_AGUJERO, Configuracion.TAMAÑO_OBSTACULO_AGUJERO);
+            this.obstaculos.add(agujero);
+            addActor(agujero);
+        }
+        //Creacion de bombas
+        for (int i = 1; i < numBombas; i++){
+            bomba = new Bomba(
+                    posicionXObstaculo(bomba),
+                    obstaculos.get(obstaculos.size() - 1).getColaY() - Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
+                    Configuracion.VELOCIDAD_OBSTACULO, Configuracion.TAMAÑO_OBSTACULO_BOMBA, Configuracion.TAMAÑO_OBSTACULO_BOMBA);
+            this.obstaculos.add(bomba);
+            addActor(bomba);
+        }
+
+        //Creacion de ramas
+        for (int i = 1; i < numRamas; i++){
+            rama = new Rama(
+                    posicionXObstaculo(rama),
+                    obstaculos.get(obstaculos.size() - 1).getColaY() - Configuracion.DISTANCIA_ENTRE_OBSTACULOS,
+                    Configuracion.VELOCIDAD_OBSTACULO, Configuracion.TAMAÑO_ANCHURA_OBSTACULO_RAMA, Configuracion.TAMAÑO_ALTURA_OBSTACULO_RAMA);
+            this.obstaculos.add(rama);
+            addActor(rama);
         }
 
 
@@ -72,7 +106,7 @@ public class ScrollHandler extends Group {
             Obstaculo o = obstaculos.get(i);
             if(o.isFueraDePantalla()){
                 if(i==0){
-                    o.reset(0);
+                    o.reset(0 - Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                     //o.reset(obstaculos.get(obstaculos.size()-1).getColaY()
                             //+ Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                 }else{
@@ -95,8 +129,8 @@ public class ScrollHandler extends Group {
 
     //BORRADO MÉTODO NUEVO TAMAÑO OBSTÁCULO
 
-    private int posicionYObstaculo(float mida){
-        return (int) (this.r.nextFloat() * (Configuracion.ANCHURA_JUEGO - mida));
+    private int posicionXObstaculo(Obstaculo o){
+        return (int) (o.nuevaPosicion().x);
     }
 
 }

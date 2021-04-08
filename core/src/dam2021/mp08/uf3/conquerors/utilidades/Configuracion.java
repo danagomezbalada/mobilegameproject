@@ -16,13 +16,14 @@ public class Configuracion {
     // Propiedades del fondo
     public static final float VELOCIDAD_FONDO = -100;
     public static final float VELOCIDAD_OBSTACULO = -150;
-    public static final float DISTANCIA_ENTRE_OBSTACULOS = 75;
+    public static final float DISTANCIA_ENTRE_OBSTACULOS = 365;
 
     // Propiedades de los obstaculos
     //TODO : Modificar tamaños de cada obstáculo
     public static final float TAMAÑO_OBSTACULO_BOMBA = 35;
-    public static final float TAMAÑO_OBSTACULO_RAMA = 35;
-    public static final float TAMAÑO_OBSTACULO_AGUJERO = 35;
+    public static final float TAMAÑO_ANCHURA_OBSTACULO_RAMA = 35;
+    public static final float TAMAÑO_ALTURA_OBSTACULO_RAMA = 115;
+    public static final float TAMAÑO_OBSTACULO_AGUJERO = 75;
 
     //Carriles
     public static final float CARRIL_IZQUIERDO = ANCHURA_JUEGO/4;

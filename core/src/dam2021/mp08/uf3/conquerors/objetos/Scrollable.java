@@ -54,7 +54,7 @@ public class Scrollable extends Actor {
         return this.posicion.x + anchura;
     }*/
 
-    public float getColaY(){ return this.posicion.y - altura; }
+    public float getColaY(){ return this.posicion.y + altura; }
 
     public float getY(){
         return this.posicion.y;
