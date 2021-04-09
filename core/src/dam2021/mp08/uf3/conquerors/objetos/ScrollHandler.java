@@ -116,11 +116,11 @@ public class ScrollHandler extends Group {
 
     public boolean hayColision(Nativo nativo) {
         //TODO: Añadir lista de obstáculos
-        /*for (Obstaculo a : ) {
-            if(a.hayColision(nativo)) {
+        for (Obstaculo o : this.obstaculos) {
+            if(o.hayColision(nativo)) {
                 return true;
             }
-        }*/
+        }
         return false;
     }
 

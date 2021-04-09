@@ -70,36 +70,36 @@ public class Nativo extends Actor {
         //Movimiento nativo
         //System.out.println(movimientoActual == MovimientoActual.NADA);
         if (movimientoActual == MovimientoActual.DERECHA) {
-                System.out.println("DRECHAAAA");
+                //System.out.println("DRECHAAAA");
                 if (carrilActual == CarrilActual.CENTRO) {
-                    System.out.println("DERECHA CENTRO");
+                    //System.out.println("DERECHA CENTRO");
                     carrilActual = CarrilActual.DERECHO;
-                    this.posicion.x = DERECHA;
+                    this.posicion.x = DERECHA - getAnchura()/2;
                     movimientoActual = MovimientoActual.NADA;
                 } else if (carrilActual == CarrilActual.DERECHO) {
-                    System.out.println("DERECHA DERECHO");
+                    //System.out.println("DERECHA DERECHO");
                     movimientoActual = MovimientoActual.NADA;
                 } else if (carrilActual == CarrilActual.IZQUIERDO) {
-                    System.out.println("DERECHA IZQUIERDO");
+                    //System.out.println("DERECHA IZQUIERDO");
                     carrilActual = CarrilActual.CENTRO;
-                    this.posicion.x = CENTRO;
+                    this.posicion.x = CENTRO - getAnchura()/2;
                     movimientoActual = MovimientoActual.NADA;
                 }
         }
             if(movimientoActual == MovimientoActual.IZQUIERDA) {
-                System.out.println("IZQUIERDAAAAAA");
+                //System.out.println("IZQUIERDAAAAAA");
                 if(carrilActual == CarrilActual.CENTRO) {
-                    System.out.println("IZQUIERDA CENTRO");
+                    //System.out.println("IZQUIERDA CENTRO");
                     carrilActual = CarrilActual.IZQUIERDO;
-                    this.posicion.x = IZQUIERDA;
+                    this.posicion.x = IZQUIERDA - getAnchura()/2;
                     movimientoActual = MovimientoActual.NADA;
                 } else if(carrilActual == CarrilActual.DERECHO) {
-                    System.out.println("IZQUIERDA DERECHO");
+                    //System.out.println("IZQUIERDA DERECHO");
                     carrilActual = CarrilActual.CENTRO;
-                    this.posicion.x = CENTRO;
+                    this.posicion.x = CENTRO - getAnchura()/2;
                     movimientoActual = MovimientoActual.NADA;
                 } else if(carrilActual == CarrilActual.IZQUIERDO) {
-                    System.out.println("IZQUIERDA IZQUIERDO");
+                    //System.out.println("IZQUIERDA IZQUIERDO");
                     movimientoActual = MovimientoActual.NADA;
                 }
             }

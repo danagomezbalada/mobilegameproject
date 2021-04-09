@@ -81,7 +81,7 @@ public class GameScreen implements Screen {
         this.stage.draw();
         this.stage.act(delta);
         //TODO: Añadir textura y eliminar dibujo de rectángulos
-        if(scrollHandler.hayColision(nativo)) {
+        if(scrollHandler.hayColision(this.nativo)) {
             Gdx.app.log("TOUCH", "NATIVO MUERTO");
         }
         dibujarElementos();

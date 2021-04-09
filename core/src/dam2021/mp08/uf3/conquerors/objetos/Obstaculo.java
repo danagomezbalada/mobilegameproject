@@ -2,26 +2,30 @@ package dam2021.mp08.uf3.conquerors.objetos;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 
+import java.security.cert.Certificate;
 import java.util.Random;
 
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Agujero;
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Bomba;
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Rama;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
-import sun.security.krb5.Config;
 
 public abstract class Obstaculo extends Scrollable{
 
     private Random r;
     protected Rectangle hitboxRect;
     protected Circle hitboxCirc;
+
+    private Circle circuloColision;
     private int carrilActual; //0 -> Izquierda  1 -> Centro  2 -> Derecha
 
     public Obstaculo(float x, float y, float velocidad, float anchura, float altura) {
         super(x, y, velocidad, anchura, altura);
         this.r = new Random();
+        this.circuloColision = new Circle();
     }
 
     public void reset(float nuevaY) {
@@ -62,6 +66,16 @@ public abstract class Obstaculo extends Scrollable{
         }
     }
 
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+
+        this.circuloColision.set(getX()+getAnchura()/2,
+                getY()+getAnchura()/2,
+                getAnchura()/2);
+
+    }
+
     public Circle getHitboxCirc() {
         return hitboxCirc;
     }
@@ -70,8 +84,16 @@ public abstract class Obstaculo extends Scrollable{
         return hitboxRect;
     }
 
+    public Circle getCirculoColision() { return circuloColision; }
+
     public int getCarrilActual(){return carrilActual;}
 
-    public abstract boolean hayColision(Nativo nativo);
+    public boolean hayColision(Nativo nativo){
+        if(getX() <= nativo.getX() + nativo.getAnchura()){
+            return (Intersector.overlaps(this.circuloColision, nativo.getHitboxNativo()));
+        }
+        return false;
+
+    }
 
 }

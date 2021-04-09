@@ -7,7 +7,7 @@ public class Configuracion {
     public static final int ALTURA_JUEGO = 1280;
 
     //Propiedades del nativo
-    public static final int ANCHURA_NATIVO = 75;
+    public static final int ANCHURA_NATIVO = 105;
     public static final int ALTURA_NATIVO = 175;
     public static final float VELOCIDAD_NATIVO = 525;
     public static final float X_INICIAL_NATIVO = ANCHURA_JUEGO/2 - ANCHURA_NATIVO/2;
