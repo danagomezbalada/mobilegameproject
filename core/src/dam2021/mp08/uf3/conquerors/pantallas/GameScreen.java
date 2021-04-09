@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import java.util.ArrayList;
 
+import dam2021.mp08.uf3.conquerors.Game;
 import dam2021.mp08.uf3.conquerors.objetos.Nativo;
 import dam2021.mp08.uf3.conquerors.objetos.Obstaculo;
 import dam2021.mp08.uf3.conquerors.objetos.ScrollHandler;
@@ -31,8 +32,11 @@ public class GameScreen implements Screen {
     private ShapeRenderer renderizadorDeFiguras;
     private Batch conjunto;
 
+    final Game game;
 
-    public GameScreen() {
+    public GameScreen(final Game game) {
+        this.game = game;
+
         this.renderizadorDeFiguras = new ShapeRenderer();
         OrthographicCamera camara = new OrthographicCamera(
                 Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
@@ -81,8 +85,12 @@ public class GameScreen implements Screen {
         this.stage.draw();
         this.stage.act(delta);
         //TODO: Añadir textura y eliminar dibujo de rectángulos
+
+        //Si choca, vuelve al MenuScreen
         if(scrollHandler.hayColision(this.nativo)) {
             Gdx.app.log("TOUCH", "NATIVO MUERTO");
+            game.setScreen(new MenuScreen(game));
+            dispose();
         }
         dibujarElementos();
     }

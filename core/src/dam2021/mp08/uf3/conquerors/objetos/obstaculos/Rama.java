@@ -14,20 +14,21 @@ public class Rama extends Obstaculo {
         this.hitboxRect = new Rectangle();
     }
 
-    @Override
+    /*@Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         batch.disableBlending();
         batch.draw(AssetManager.rama, getX(), getY(),
                 getAnchura(), getAltura());
         batch.enableBlending();
-    }
+    }*/
 
     @Override
     public void act(float delta) {
         super.act(delta);
 
         //TODO: Asignar medidas del obstaculo a la hitbox
+        this.hitboxRect.set(getX()+getAnchura()/2, getY()+getAltura()/2, getAnchura(), getAltura());
     }
 
     @Override

@@ -14,20 +14,23 @@ public class Bomba extends Obstaculo {
         this.hitboxCirc = new Circle();
     }
 
-    @Override
+    /*@Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         batch.disableBlending();
         batch.draw(AssetManager.bomba, getX(), getY(),
                 getAnchura(), getAltura());
         batch.enableBlending();
-    }
+    }*/
 
     @Override
     public void act(float delta) {
         super.act(delta);
 
         //TODO: Asignar medidas del obstaculo a la hitbox
+        this.hitboxCirc.set(getX()+getAnchura()/2,
+                getY()+getAnchura()/2,
+                getAnchura()/2);
     }
 
     @Override
