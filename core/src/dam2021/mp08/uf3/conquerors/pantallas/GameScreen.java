@@ -52,8 +52,9 @@ public class GameScreen implements Screen {
                 Configuracion.X_INICIAL_NATIVO, Configuracion.Y_INICIAL_NATIVO);
         this.scrollHandler = new ScrollHandler();
 
-        this.stage.addActor(this.nativo);
+
         this.stage.addActor(this.scrollHandler);
+        this.stage.addActor(this.nativo);
 
         //Gestor de entrada por pantalla
         Gdx.input.setInputProcessor(new InputHandler(this));
@@ -92,9 +93,9 @@ public class GameScreen implements Screen {
         renderizadorDeFiguras.begin(ShapeRenderer.ShapeType.Filled);
 
         //Dibujamos al nativo
-        renderizadorDeFiguras.setColor(new Color(1, 0, 0, 1));
+       /* renderizadorDeFiguras.setColor(new Color(1, 0, 0, 1));
         renderizadorDeFiguras.rect(nativo.getX(), nativo.getY(),
-                nativo.getAnchura(), nativo.getAltura());
+                nativo.getAnchura(), nativo.getAltura());*/
 
         //Dibujamos los obstaculos
         ArrayList<Obstaculo> obstaculos = this.scrollHandler.getObstaculos();

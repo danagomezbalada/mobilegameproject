@@ -1,7 +1,9 @@
 package dam2021.mp08.uf3.conquerors.soporte;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -13,19 +15,10 @@ public class AssetManager {
 
     public static TextureRegion personajeQuieto, fonsDePantalla, bomba, rama, agujero;
 
-    public static Texture texturaBackground, texturaBomba, texturaRama, texturaAgujero; //texture sheet
-    /*
-    //imatge nau
-    public static TextureRegion nau, nauBaixa, nauDalt;
-    public static TextureRegion fonsDePantalla;
+    public static TextureRegion[] personaje;
+    public static Animation animationPersonaje;
 
-    //asteroides
-    public static TextureRegion[] asteroides;
-    public static Animation animationAsteroides;
-
-    //explosions
-    public static TextureRegion[] explosions;
-    public static Animation animationExplosio;*/
+    public static Texture texturaBackground, texturaBomba, texturaRama, texturaAgujero, texturaPersonaje; //texture sheet
 
     public AssetManager() {
 
@@ -43,6 +36,7 @@ public class AssetManager {
         texturaAgujero = new Texture(Gdx.files.internal("img/hole.png"));
 
         personajeQuieto = new TextureRegion();
+        texturaPersonaje = new Texture(Gdx.files.internal("img/personaje.png"));
 
         /*textura = new Texture(Gdx.files.internal("sheet.png"));
         textura.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest); //filtre textura per que es vegi més nítida
@@ -81,6 +75,26 @@ public class AssetManager {
         animationExplosio = new Animation(0.04f, explosions);
         animationExplosio.setPlayMode(Animation.PlayMode.NORMAL);
 */
+        //Imagen nativo
+        personaje = new TextureRegion[8];
+
+        for(int i=0; i<(personaje.length/2); i++){
+
+            //Eso mueve el personaje para un lado
+            personaje[i] = new TextureRegion(texturaPersonaje, i * 64, 0, 58, 63);
+            personaje[i].flip(false, true);
+
+            //Este para el otro lado
+            personaje[i+(personaje.length/2)] = new TextureRegion(personaje[i]);
+            personaje[i+(personaje.length/2)].flip(true, false);
+
+        }
+
+        // Animacion nativo, el primer numero del contructor animation es la velocidad de la animacion
+        animationPersonaje = new Animation(0.10f, personaje);
+        animationPersonaje.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
+
+
         fonsDePantalla = new TextureRegion(texturaBackground, 0, 177, Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
         bomba = new TextureRegion(texturaBomba, 0,205, 100, 130); //TODO: Asignar valores correctos de tamaño
         rama = new TextureRegion(texturaRama, 0, 200, 100, 130);

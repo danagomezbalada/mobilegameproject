@@ -1,11 +1,14 @@
 package dam2021.mp08.uf3.conquerors.objetos;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g3d.particles.influencers.ScaleInfluencer;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import java.util.Random;
+
+import dam2021.mp08.uf3.conquerors.soporte.AssetManager;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
 public class Nativo extends Actor {
@@ -18,6 +21,9 @@ public class Nativo extends Actor {
     public static final float IZQUIERDA = Configuracion.CARRIL_IZQUIERDO;
     public static final float CENTRO = Configuracion.CARRIL_CENTRAL;
     public static final float DERECHA = Configuracion.CARRIL_DERECHO;
+
+    private Random r = new Random();
+    private float tiempo;
 
     public enum MovimientoActual {
         IZQUIERDA,
@@ -40,6 +46,7 @@ public class Nativo extends Actor {
         this.anchura = anchura;
         this.altura = altura;
         this.posicion = new Vector2(x, y);
+        this.tiempo = r.nextFloat();
 
         this.hitbox = new Rectangle();
 
@@ -51,13 +58,15 @@ public class Nativo extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
+        //Coje la animacion del nativo
         super.draw(batch, parentAlpha);
+        batch.draw((TextureRegion) AssetManager.animationPersonaje.getKeyFrame(this.tiempo), this.getX(), this.getY(), this.getAnchura(), this.getAltura());
         //batch.draw(this.getX(), this.getY(), this.getAnchura(), this.getAltura());
     }
 
     @Override
     public void act(float delta) {
-        //System.out.println("ACCCTTTTT");
+        this.tiempo+=delta;
         //Movimiento nativo
         //System.out.println(movimientoActual == MovimientoActual.NADA);
         if (movimientoActual == MovimientoActual.DERECHA) {
