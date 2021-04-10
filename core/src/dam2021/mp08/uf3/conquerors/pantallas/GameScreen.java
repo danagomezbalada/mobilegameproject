@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -19,6 +20,7 @@ import dam2021.mp08.uf3.conquerors.objetos.ScrollHandler;
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Agujero;
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Bomba;
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Rama;
+import dam2021.mp08.uf3.conquerors.soporte.AssetManager;
 import dam2021.mp08.uf3.conquerors.soporte.InputHandler;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
@@ -82,10 +84,11 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+
         this.stage.draw();
         this.stage.act(delta);
-        //TODO: Añadir textura y eliminar dibujo de rectángulos
 
+        //TODO: Al chocar devuelve al menu principal
         //Si choca, vuelve al MenuScreen
         if(scrollHandler.hayColision(this.nativo)) {
             Gdx.app.log("TOUCH", "NATIVO MUERTO");
@@ -93,17 +96,16 @@ public class GameScreen implements Screen {
             dispose();
         }
         dibujarElementos();
+
+        //Incrementa la velocidad
+        scrollHandler.aumentarVelocidad();
+        scrollHandler.aumentarVelocidad();
     }
     private void dibujarElementos() {
 
         renderizadorDeFiguras.setProjectionMatrix(
                 conjunto.getProjectionMatrix());
         renderizadorDeFiguras.begin(ShapeRenderer.ShapeType.Filled);
-
-        //Dibujamos al nativo
-       /* renderizadorDeFiguras.setColor(new Color(1, 0, 0, 1));
-        renderizadorDeFiguras.rect(nativo.getX(), nativo.getY(),
-                nativo.getAnchura(), nativo.getAltura());*/
 
         //Dibujamos los obstaculos
         ArrayList<Obstaculo> obstaculos = this.scrollHandler.getObstaculos();
@@ -133,9 +135,16 @@ public class GameScreen implements Screen {
                 renderizadorDeFiguras.rect(obstaculo.getX(), obstaculo.getY(),
                         obstaculo.getAnchura(), obstaculo.getAltura());
             }
-
-
         }
+
+        //TODO: Muestra los puntos actuales por pantalla durante el juego
+        //Muestra los puntos actuales por pantalla
+        BitmapFont puntos = game.assets.fuente;
+        conjunto.begin();
+        puntos.draw(conjunto,
+                "PUNTOS: " + scrollHandler.getPuntos(), 5,
+                stage.getViewport().getScreenY() + stage.getHeight() - puntos.getLineHeight());
+        conjunto.end();
         renderizadorDeFiguras.end();
     }
 

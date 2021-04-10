@@ -11,11 +11,12 @@ import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Rama;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
 public class ScrollHandler extends Group {
-        //TODO cambiar movimientos en vertical (van del reves abajo->arriba)
+
     private Background background, background_back;
     private int numAgujeros, numBombas, numRamas;
     private ArrayList<Obstaculo> obstaculos;
     private Random r;
+    private int puntos;
 
     public ScrollHandler() {
         //x, y, velocidad, anchura, altura
@@ -33,9 +34,7 @@ public class ScrollHandler extends Group {
         this.numBombas = 2;
         this.numRamas = 5;
         this.obstaculos = new ArrayList<Obstaculo>();
-        //TODO: Diferentes tamaños por obstáculo
 
-        //TODO: Creación de obstaculos arreglar
         Obstaculo agujero = new Agujero(Configuracion.ANCHURA_JUEGO,
                 0,
                 Configuracion.VELOCIDAD_OBSTACULO, Configuracion.TAMAÑO_OBSTACULO_AGUJERO, Configuracion.TAMAÑO_OBSTACULO_AGUJERO);
@@ -54,7 +53,6 @@ public class ScrollHandler extends Group {
         this.obstaculos.add(rama);
         addActor(rama);
 
-        //TODO: Corregir creación de múltiples obstáculos
         //Creacion de agujeros
         for (int i = 1; i < numAgujeros; i++){
             agujero = new Agujero(
@@ -103,6 +101,7 @@ public class ScrollHandler extends Group {
         for (int i = 0; i < obstaculos.size(); i++) {
             Obstaculo o = obstaculos.get(i);
             if(o.isFueraDePantalla()){
+                puntos++;
                 if(i==0){
                     o.reset(0 - Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                     //o.reset(obstaculos.get(obstaculos.size()-1).getColaY()
@@ -115,7 +114,6 @@ public class ScrollHandler extends Group {
     }
 
     public boolean hayColision(Nativo nativo) {
-        //TODO: Añadir lista de obstáculos
         for (Obstaculo o : this.obstaculos) {
             if(o.hayColision(nativo)) {
                 return true;
@@ -124,6 +122,18 @@ public class ScrollHandler extends Group {
         return false;
     }
 
+    //TODO: Añadidos puntos (se aumentan cuando los obstaculos hacen reset)
+    public int getPuntos(){
+        return this.puntos;
+    }
+
+    //TODO: Añadido metodo para aumentar velocidad del juego
+    public void aumentarVelocidad(){
+        this.background.setVelocidad(this.background.getVelocidad()-0.001f);
+        this.background_back.setVelocidad(this.background_back.getVelocidad()-0.001f);
+        for (Obstaculo o : obstaculos)
+            o.setVelocidad(o.getVelocidad()-0.001f);
+    }
 
     //BORRADO MÉTODO NUEVO TAMAÑO OBSTÁCULO
 

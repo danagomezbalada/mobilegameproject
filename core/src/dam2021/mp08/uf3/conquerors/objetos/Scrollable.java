@@ -42,6 +42,11 @@ public class Scrollable extends Actor {
         this.posicion = posicion;
     }
 
+    //TODO: Añadidos getter y setter de velocidad (para incrementar)
+    public float getVelocidad() { return velocidad; }
+
+    public void setVelocidad(float velocidad) { this.velocidad = velocidad; }
+
     public boolean isFueraDePantalla() {
         return fueraDePantalla;
     }
