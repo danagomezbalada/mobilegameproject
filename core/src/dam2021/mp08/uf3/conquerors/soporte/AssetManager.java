@@ -1,7 +1,6 @@
 package dam2021.mp08.uf3.conquerors.soporte;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -11,7 +10,7 @@ import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
 public class AssetManager {
 
-    public static BitmapFont syneMono;
+    public static BitmapFont fuente;
 
     public static TextureRegion personajeQuieto, fonsDePantalla, bomba, rama, agujero;
 
@@ -26,9 +25,10 @@ public class AssetManager {
 
 
     public static void load() {
-        Texture syneMonoTexture = new Texture(Gdx.files.internal("fonts/mono_syne_disfont_final.png"));
-        syneMonoTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        syneMono = new BitmapFont(Gdx.files.internal("fonts/mono_syne_disfont_final.fnt"), new TextureRegion(syneMonoTexture), false);
+        //TODO: Cambiado tipo y tamaño de fuente (para mostrar puntos)
+        fuente = new BitmapFont(Gdx.files.internal("fonts/mono_syne.fnt"),
+                Gdx.files.internal("fonts/mono_syne.png"), true);
+        fuente.getData().setScale(1.5f,1);
 
         texturaBackground = new Texture(Gdx.files.internal("img/background.png"));
         texturaBomba = new Texture(Gdx.files.internal("img/bomb.png"));
@@ -36,7 +36,8 @@ public class AssetManager {
         texturaAgujero = new Texture(Gdx.files.internal("img/hole.png"));
 
         personajeQuieto = new TextureRegion();
-        texturaPersonaje = new Texture(Gdx.files.internal("img/personaje.png"));
+        //TODO: Cambiada ruta de imagen (coje la de Configuracion)
+        texturaPersonaje = new Texture(Gdx.files.internal(Configuracion.rutaActual));
 
         /*textura = new Texture(Gdx.files.internal("sheet.png"));
         textura.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest); //filtre textura per que es vegi més nítida
