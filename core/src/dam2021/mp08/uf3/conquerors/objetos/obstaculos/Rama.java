@@ -27,8 +27,8 @@ public class Rama extends Obstaculo {
     public void act(float delta) {
         super.act(delta);
 
-        //TODO: Asignar medidas del obstaculo a la hitbox
-        this.hitboxRect.set(getX()+getAnchura()/2, getY()+getAltura()/2, getAnchura(), getAltura());
+        //TODO: Cambiado tamaño hitbox
+        this.hitboxRect.set(getX()+getAnchura()/2, getY()+getAltura()/2, getAnchura()/2, getAltura()/2);
     }
 
     @Override

@@ -103,8 +103,8 @@ public class Nativo extends Actor {
                     movimientoActual = MovimientoActual.NADA;
                 }
             }
-    //TODO: Modificar valores de la hitbox del nativo
-        this.hitbox.set(getX(),getY(),getAnchura(),getAltura());
+    //TODO: Cambiado tamaño hitbox
+        this.hitbox.set(getX() + getAnchura()/2,getY() + getAltura()/2,getAnchura()/2,getAltura()/2);
 }
 
     public int getAnchura() {

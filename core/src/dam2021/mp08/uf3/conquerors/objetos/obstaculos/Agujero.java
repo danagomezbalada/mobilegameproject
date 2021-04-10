@@ -16,7 +16,6 @@ public class Agujero extends Obstaculo {
     public void act(float delta) {
         super.act(delta);
 
-        //TODO: Asignar medidas del obstaculo a la hitbox
         this.hitboxCirc.set(getX()+getAnchura()/2,
                 getY()+getAnchura()/2,
                 getAnchura()/2);
