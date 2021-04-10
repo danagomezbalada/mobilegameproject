@@ -15,6 +15,7 @@ public class Game extends com.badlogic.gdx.Game {
 	public SpriteBatch batch;
 	public Texture img;
 	public BitmapFont font;
+	public AssetManager assets;
 	
 	@Override
 	public void create () {
