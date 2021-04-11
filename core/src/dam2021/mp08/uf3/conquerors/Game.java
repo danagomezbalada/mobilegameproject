@@ -1,13 +1,9 @@
 package dam2021.mp08.uf3.conquerors;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import dam2021.mp08.uf3.conquerors.pantallas.GameScreen;
 import dam2021.mp08.uf3.conquerors.pantallas.MenuScreen;
 import dam2021.mp08.uf3.conquerors.soporte.AssetManager;
 
@@ -22,7 +18,7 @@ public class Game extends com.badlogic.gdx.Game {
 		AssetManager.load();
 
 		batch = new SpriteBatch();
-		font = new BitmapFont(); // use libGDX's default Arial font
+		font = new BitmapFont();
 		setScreen(new MenuScreen(this));
 	}
 

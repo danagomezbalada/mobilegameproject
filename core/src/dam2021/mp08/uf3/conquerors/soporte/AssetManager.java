@@ -25,7 +25,6 @@ public class AssetManager {
 
 
     public static void load() {
-        //TODO: Cambiado tipo y tamaño de fuente (para mostrar puntos)
         fuente = new BitmapFont(Gdx.files.internal("fonts/mono_syne.fnt"),
                 Gdx.files.internal("fonts/mono_syne.png"), true);
         fuente.getData().setScale(1.5f,1);
@@ -36,46 +35,8 @@ public class AssetManager {
         texturaAgujero = new Texture(Gdx.files.internal("img/hole.png"));
 
         personajeQuieto = new TextureRegion();
-        //TODO: Cambiada ruta de imagen (coje la de Configuracion)
         texturaPersonaje = new Texture(Gdx.files.internal(Configuracion.rutaActual));
 
-        /*textura = new Texture(Gdx.files.internal("sheet.png"));
-        textura.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest); //filtre textura per que es vegi més nítida
-
-
-
-        nau = new TextureRegion(textura, 0, 0, 36, 15);
-        nau.flip(false, true);
-
-        nauDalt = new TextureRegion(textura, 36, 0, 36, 15);
-        nauDalt.flip(false, true);
-
-        nauBaixa = new TextureRegion(textura, 72, 0, 36, 15);
-        nauBaixa.flip(false, true);
-
-        asteroides = new TextureRegion[16];
-        for (int i = 0; i < asteroides.length; i++) {
-            asteroides[i] = new TextureRegion(textura, i * 34, 15, 34, 34);
-            asteroides[i].flip(false, true);
-        }
-
-        //animacio asteroides
-        animationAsteroides = new Animation(0.05f, asteroides);
-        animationAsteroides.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
-
-        explosions = new TextureRegion[16];
-
-        int index = 0;
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 8; j++) {
-                explosions[index++] = new TextureRegion(textura, j * 64, i * 64 + 49, 64, 64);
-                explosions[indecccccccccccccccccccccccccx - 1].flip(false, true);
-            }
-        }
-
-        animationExplosio = new Animation(0.04f, explosions);
-        animationExplosio.setPlayMode(Animation.PlayMode.NORMAL);
-*/
         //Imagen nativo
         personaje = new TextureRegion[8];
 
@@ -97,7 +58,7 @@ public class AssetManager {
 
 
         fonsDePantalla = new TextureRegion(texturaBackground, 0, 0, Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
-        bomba = new TextureRegion(texturaBomba, 0,0, 100, 130); //TODO: Asignar valores correctos de tamaño
+        bomba = new TextureRegion(texturaBomba, 0,0, 100, 130);
         bomba.flip(false, true);
         rama = new TextureRegion(texturaRama, 0, 0, 130, 100);
         agujero = new TextureRegion(texturaAgujero, 0, 0, 90, 90);

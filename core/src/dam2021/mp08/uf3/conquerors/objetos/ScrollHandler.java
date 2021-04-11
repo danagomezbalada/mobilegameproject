@@ -19,7 +19,6 @@ public class ScrollHandler extends Group {
     private int puntos;
 
     public ScrollHandler() {
-        //x, y, velocidad, anchura, altura
         this.background = new Background(0, 0, Configuracion.VELOCIDAD_FONDO,
                 Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
         this.background_back = new Background(0, this.background.getColaY(), Configuracion.VELOCIDAD_FONDO,
@@ -104,8 +103,6 @@ public class ScrollHandler extends Group {
                 puntos++;
                 if(i==0){
                     o.reset(0 - Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
-                    //o.reset(obstaculos.get(obstaculos.size()-1).getColaY()
-                            //+ Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
                 }else{
                     o.reset(0);
                 }
@@ -122,20 +119,16 @@ public class ScrollHandler extends Group {
         return false;
     }
 
-    //TODO: Añadidos puntos (se aumentan cuando los obstaculos hacen reset)
     public int getPuntos(){
         return this.puntos;
     }
 
-    //TODO: Añadido metodo para aumentar velocidad del juego
     public void aumentarVelocidad(){
         this.background.setVelocidad(this.background.getVelocidad()-0.001f);
         this.background_back.setVelocidad(this.background_back.getVelocidad()-0.001f);
         for (Obstaculo o : obstaculos)
             o.setVelocidad(o.getVelocidad()-0.001f);
     }
-
-    //BORRADO MÉTODO NUEVO TAMAÑO OBSTÁCULO
 
     private int posicionXObstaculo(Obstaculo o){
         return (int) (o.nuevaPosicion().x);

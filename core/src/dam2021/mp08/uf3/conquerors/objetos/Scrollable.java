@@ -42,7 +42,6 @@ public class Scrollable extends Actor {
         this.posicion = posicion;
     }
 
-    //TODO: Añadidos getter y setter de velocidad (para incrementar)
     public float getVelocidad() { return velocidad; }
 
     public void setVelocidad(float velocidad) { this.velocidad = velocidad; }
@@ -54,10 +53,6 @@ public class Scrollable extends Actor {
     public float getX(){
         return this.posicion.x;
     }
-
-    /*public float getColaX(){
-        return this.posicion.x + anchura;
-    }*/
 
     public float getColaY(){ return this.posicion.y - Configuracion.ALTURA_JUEGO; }
 

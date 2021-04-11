@@ -3,7 +3,6 @@ package dam2021.mp08.uf3.conquerors.pantallas;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -11,20 +10,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-import javax.swing.event.ChangeEvent;
-
 import dam2021.mp08.uf3.conquerors.Game;
-import dam2021.mp08.uf3.conquerors.soporte.AssetManager;
 
 public class MenuScreen implements Screen {
-
-    //TODO: Creada pantalla del menu principal (botones funcionales y background)
 
     final Game game;
     private Stage stage;
@@ -43,7 +35,6 @@ public class MenuScreen implements Screen {
         Table table = new Table();
         table.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture("img/background.png"))));
         table.setFillParent(true);
-        //table.setDebug(true);
         stage.addActor(table);
 
         Skin skin = new Skin(Gdx.files.internal("skin/flat-earth-ui.json"));

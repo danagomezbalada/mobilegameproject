@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 
-import java.security.cert.Certificate;
 import java.util.Random;
 
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Agujero;

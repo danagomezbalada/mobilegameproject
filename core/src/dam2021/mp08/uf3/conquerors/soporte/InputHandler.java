@@ -42,12 +42,10 @@ public class InputHandler implements InputProcessor {
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         System.out.println(screenX + " : " + previaX);
         if (this.previaX < screenX){
-            System.out.println("DERECHA");
             this.nativo.irDerecha();
         }
         //Abajo - Derecha
         else{
-            System.out.println("IZQUIERDA");
             this.nativo.irIzquierda();
         }
         return true;

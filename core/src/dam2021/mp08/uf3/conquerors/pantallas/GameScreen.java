@@ -2,8 +2,6 @@ package dam2021.mp08.uf3.conquerors.pantallas;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -20,7 +18,6 @@ import dam2021.mp08.uf3.conquerors.objetos.ScrollHandler;
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Agujero;
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Bomba;
 import dam2021.mp08.uf3.conquerors.objetos.obstaculos.Rama;
-import dam2021.mp08.uf3.conquerors.soporte.AssetManager;
 import dam2021.mp08.uf3.conquerors.soporte.InputHandler;
 import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
@@ -42,8 +39,6 @@ public class GameScreen implements Screen {
         this.renderizadorDeFiguras = new ShapeRenderer();
         OrthographicCamera camara = new OrthographicCamera(
                 Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
-
-        //True para que haga servir la Y
         camara.setToOrtho(true);
 
         //Viewport para ver que hay en pantalla
@@ -94,7 +89,6 @@ public class GameScreen implements Screen {
             game.setScreen(new MenuScreen(game));
             dispose();
         }
-        //dibujarElementos();
 
         //Muestra los puntos actuales por pantalla
         BitmapFont puntos = game.assets.fuente;
@@ -108,44 +102,6 @@ public class GameScreen implements Screen {
         //Incrementa la velocidad
         scrollHandler.aumentarVelocidad();
         scrollHandler.aumentarVelocidad();
-    }
-    private void dibujarElementos() {
-
-        renderizadorDeFiguras.setProjectionMatrix(
-                conjunto.getProjectionMatrix());
-        renderizadorDeFiguras.begin(ShapeRenderer.ShapeType.Filled);
-
-        //Dibujamos los obstaculos
-        ArrayList<Obstaculo> obstaculos = this.scrollHandler.getObstaculos();
-        Obstaculo obstaculo;
-
-        for (int i = 0; i < obstaculos.size(); i++){
-            obstaculo = obstaculos.get(i);
-            //TODO: Cambiar colores de obstaculos por imagenes
-            if (obstaculo instanceof Agujero){
-                renderizadorDeFiguras.setColor(1, 1, 1, 1);
-                renderizadorDeFiguras.circle(
-                        obstaculo.getX() + obstaculo.getAnchura()/2,
-                        obstaculo.getY() + obstaculo.getAltura()/2,
-                        obstaculo.getAnchura()/2);
-            }
-
-            else if (obstaculo instanceof Bomba){
-                renderizadorDeFiguras.setColor(0, 0, 1, 1);
-                renderizadorDeFiguras.circle(
-                        obstaculo.getX() + obstaculo.getAnchura()/2,
-                        obstaculo.getY() + obstaculo.getAltura()/2,
-                        obstaculo.getAnchura()/2);
-            }
-
-            else if (obstaculo instanceof Rama){
-                renderizadorDeFiguras.setColor(1, 0, 0, 1);
-                renderizadorDeFiguras.rect(obstaculo.getX(), obstaculo.getY(),
-                        obstaculo.getAnchura(), obstaculo.getAltura());
-            }
-        }
-
-
     }
 
     @Override

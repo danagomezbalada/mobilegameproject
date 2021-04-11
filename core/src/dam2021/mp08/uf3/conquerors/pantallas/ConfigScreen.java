@@ -26,8 +26,6 @@ import dam2021.mp08.uf3.conquerors.utilidades.Configuracion;
 
 public class ConfigScreen implements Screen {
 
-    //TODO: Creada pantalla de configuracion (para elegir personaje)
-
     final Game game;
     private Stage stage;
 
@@ -51,10 +49,8 @@ public class ConfigScreen implements Screen {
         Table table = new Table();
         table.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture("img/background.png"))));
         table.setFillParent(true);
-        //table.setDebug(true);
         stage.addActor(table);
 
-        // temporary until we have asset manager in
         Skin skin = new Skin(Gdx.files.internal("skin/flat-earth-ui.json"));
 
        //Personaje1 enabled/disabled

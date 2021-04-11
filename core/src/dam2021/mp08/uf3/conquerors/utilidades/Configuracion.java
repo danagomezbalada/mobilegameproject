@@ -1,8 +1,5 @@
 package dam2021.mp08.uf3.conquerors.utilidades;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-
 public class Configuracion {
 
     //Tamaño del juego
@@ -12,7 +9,6 @@ public class Configuracion {
     //Propiedades del nativo
     public static final int ANCHURA_NATIVO = 125;
     public static final int ALTURA_NATIVO = 175;
-    public static final float VELOCIDAD_NATIVO = 525;
     public static final float X_INICIAL_NATIVO = ANCHURA_JUEGO/2 - ANCHURA_NATIVO/2;
     public static final float Y_INICIAL_NATIVO = ALTURA_JUEGO - 250;
 
@@ -32,7 +28,6 @@ public class Configuracion {
     public static final float CARRIL_CENTRAL = ANCHURA_JUEGO/2;
     public static final float CARRIL_DERECHO = ANCHURA_JUEGO/1.333333333333f;
 
-    //TODO: Añadida textura de personaje variable
     //Textura personaje
     public static String rutaActual = "img/personaje.png";
     public static void setRutaActual(String rutaNueva){
