@@ -2,14 +2,25 @@ package dam2021.mp08.uf3.conquerors.objetos.obstaculos;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.graphics.g2d.Batch;
 
 import dam2021.mp08.uf3.conquerors.objetos.Nativo;
 import dam2021.mp08.uf3.conquerors.objetos.Obstaculo;
+import dam2021.mp08.uf3.conquerors.soporte.AssetManager;
 
 public class Agujero extends Obstaculo {
     public Agujero(float x, float y, float velocidad, float anchura, float altura) {
         super(x, y, velocidad, anchura, altura);
         this.hitboxCirc = new Circle();
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
+        batch.enableBlending();
+        batch.draw(AssetManager.agujero, getX(), getY(),
+                getAnchura(), getAltura());
+
     }
 
     @Override

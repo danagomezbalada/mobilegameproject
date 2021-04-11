@@ -14,14 +14,14 @@ public class Bomba extends Obstaculo {
         this.hitboxCirc = new Circle();
     }
 
-    /*@Override
+    @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        batch.disableBlending();
+        batch.enableBlending();
         batch.draw(AssetManager.bomba, getX(), getY(),
                 getAnchura(), getAltura());
-        batch.enableBlending();
-    }*/
+
+    }
 
     @Override
     public void act(float delta) {

@@ -96,10 +96,12 @@ public class AssetManager {
         animationPersonaje.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
 
 
-        fonsDePantalla = new TextureRegion(texturaBackground, 0, 177, Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
-        bomba = new TextureRegion(texturaBomba, 0,205, 100, 130); //TODO: Asignar valores correctos de tamaño
-        rama = new TextureRegion(texturaRama, 0, 200, 100, 130);
-        agujero = new TextureRegion(texturaAgujero, 0, 30, 30, 30);
+        fonsDePantalla = new TextureRegion(texturaBackground, 0, 0, Configuracion.ANCHURA_JUEGO, Configuracion.ALTURA_JUEGO);
+        bomba = new TextureRegion(texturaBomba, 0,0, 100, 130); //TODO: Asignar valores correctos de tamaño
+        bomba.flip(false, true);
+        rama = new TextureRegion(texturaRama, 0, 0, 130, 100);
+        agujero = new TextureRegion(texturaAgujero, 0, 0, 90, 90);
+
     }
 
     public static void dispose() {

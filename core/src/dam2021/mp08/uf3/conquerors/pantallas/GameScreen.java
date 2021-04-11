@@ -88,14 +88,22 @@ public class GameScreen implements Screen {
         this.stage.draw();
         this.stage.act(delta);
 
-        //TODO: Al chocar devuelve al menu principal
         //Si choca, vuelve al MenuScreen
         if(scrollHandler.hayColision(this.nativo)) {
             Gdx.app.log("TOUCH", "NATIVO MUERTO");
             game.setScreen(new MenuScreen(game));
             dispose();
         }
-        dibujarElementos();
+        //dibujarElementos();
+
+        //Muestra los puntos actuales por pantalla
+        BitmapFont puntos = game.assets.fuente;
+        conjunto.begin();
+        puntos.draw(conjunto,
+                "PUNTOS: " + scrollHandler.getPuntos(), 5,
+                stage.getViewport().getScreenY() + stage.getHeight() - puntos.getLineHeight());
+        conjunto.end();
+        renderizadorDeFiguras.end();
 
         //Incrementa la velocidad
         scrollHandler.aumentarVelocidad();
@@ -137,15 +145,7 @@ public class GameScreen implements Screen {
             }
         }
 
-        //TODO: Muestra los puntos actuales por pantalla durante el juego
-        //Muestra los puntos actuales por pantalla
-        BitmapFont puntos = game.assets.fuente;
-        conjunto.begin();
-        puntos.draw(conjunto,
-                "PUNTOS: " + scrollHandler.getPuntos(), 5,
-                stage.getViewport().getScreenY() + stage.getHeight() - puntos.getLineHeight());
-        conjunto.end();
-        renderizadorDeFiguras.end();
+
     }
 
     @Override
