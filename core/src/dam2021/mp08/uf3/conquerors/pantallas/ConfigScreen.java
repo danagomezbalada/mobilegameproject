@@ -138,7 +138,12 @@ public class ConfigScreen implements Screen {
         personaje4Label = new Label( "Azul", skin, "button" );
 
         tituloLabel.getStyle().font.getData().setScale(1.66f);
-        tituloLabel.getStyle().fontColor.set(0,0,0,1);
+        tituloLabel.getStyle().fontColor.set(1,1,1,1);
+
+        personaje1Label.getStyle().fontColor.set(1,1,1,1);
+        personaje2Label.getStyle().fontColor.set(1,1,1,1);
+        personaje3Label.getStyle().fontColor.set(1,1,1,1);
+        personaje4Label.getStyle().fontColor.set(1,1,1,1);
 
         table.row().pad(40, 0, 60, 0).size(300,200);
         table.add(tituloLabel);
