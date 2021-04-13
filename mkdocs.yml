@@ -1,6 +1,11 @@
-site_name: My Docs
+site_name: Colonitzacio i els venuts
 site_url: https://natius-dev.gitlab.io/colonitzacio-i-els-venuts
 site_dir: public
 repo_url: https://gitlab.com/natius-dev/colonitzacio-i-els-venuts
 nav:
-    - Home: index.md
+    - Home: inicio.md
+    - Índice: indice.md
+    - Disseny: disseny.md
+    - Implementació de la interfície: implementacio.md
+    - Implementació de la lògica: logica.md
+
