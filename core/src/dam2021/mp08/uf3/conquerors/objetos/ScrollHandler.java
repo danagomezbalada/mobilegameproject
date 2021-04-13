@@ -97,14 +97,18 @@ public class ScrollHandler extends Group {
             background_back.reset(this.background.getColaY());
         }
 
+        float lastYPos = 0;
+
         for (int i = 0; i < obstaculos.size(); i++) {
             Obstaculo o = obstaculos.get(i);
             if(o.isFueraDePantalla()){
                 puntos++;
-                if(i==0){
-                    o.reset(0 - Configuracion.DISTANCIA_ENTRE_OBSTACULOS);
+                if(i > 0 && i < 2){
+                    o.reset(0 - lastYPos);
+                    lastYPos = o.getY();
                 }else{
-                    o.reset(0);
+                    o.reset(0 - lastYPos);
+                    lastYPos = o.getY();
                 }
             }
         }

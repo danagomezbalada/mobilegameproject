@@ -18,6 +18,8 @@ public abstract class Obstaculo extends Scrollable{
     protected Rectangle hitboxRect;
     protected Circle hitboxCirc;
 
+    private int currPos = 0;
+
     private Circle circuloColision;
     private int carrilActual; //0 -> Izquierda  1 -> Centro  2 -> Derecha
 
@@ -48,7 +50,12 @@ public abstract class Obstaculo extends Scrollable{
     }
 
     public Vector2 nuevaPosicion() {
-        int pos = r.nextInt(3);
+        int pos = 0;
+        do {
+            pos = r.nextInt(3);
+        } while (pos == currPos);
+        currPos = pos;
+
         switch (pos) {
             case 0:
                 carrilActual = 0;
